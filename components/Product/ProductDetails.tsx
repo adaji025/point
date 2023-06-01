@@ -35,14 +35,14 @@ export default function ProductDetails() {
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
     return (
-        <div className="h-screen bg-gray-100 pt-20">
+        <div className="bg-gray-100 pt-20">
             <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
-                <div className="rounded-lg md:w-2/3">
-                    <div className="justify-center h-full mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
-                        <img src="https://images.africanfinancials.com/63be93ed-ng-mtn-logo-200x200.png" alt="product-image" className="w-52 h-52 rounded-lg" />
-                    </div>
-                </div>
-                <div className="mt-6 h-full rounded-lg p-6 md:mt-0 md:w-2/3">
+            <div className="rounded-lg md:w-2/3 sticky top-0">
+  <div className="justify-center h-full mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
+    <img src="https://images.africanfinancials.com/63be93ed-ng-mtn-logo-200x200.png" alt="product-image" className="w-52 h-52 rounded-lg" />
+  </div>
+</div>
+                <div className="mt-6 h-full rounded-lg p-6 md:mt-0 md:w-2/3 overflow-y-auto">
                     <div className="mb-2 flex justify-between">
                         <div className="mt-5 sm:mt-0">
                             <h2 className="text-2xl font-bold text-gray-900">MTN Refill</h2>
@@ -97,22 +97,25 @@ export default function ProductDetails() {
                         </div>
                     </div>
                     <hr className="my-4" />
-                    <div className="mt-10 flex">
-                        <button
-                            type="submit"
-                            className="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent bg-[#114f45] px-8 py-3 text-base font-medium text-white hover:bg-[#edc701]  focus:outline-none focus:ring-2 focus:ring-[#114f45] focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
-                        >
-                            <ShoppingCartIcon className="-ml-0.5 h-5 w-5" aria-hidden="true" /> Add to cart
-                        </button>
+                    <div className="mt-10 flex flex-col sm:flex-row">
+  <div className="flex flex-col sm:flex-row">
+    <button
+      type="submit"
+      className="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent bg-[#114f45] px-8 py-3 text-base font-medium text-white hover:bg-[#edc701] focus:outline-none focus:ring-2 focus:ring-[#114f45] focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full sm:mr-4"
+    >
+      <ShoppingCartIcon className="-ml-0.5 h-5 w-5" aria-hidden="true" />
+      Add to cart
+    </button>
 
-                        <button
-                            type="button"
-                            className="ml-4 bg-[#114f45] flex items-center justify-center rounded-full px-3 py-3 text-white hover:bg-[#edc701]"
-                        >   <ShoppingBagIcon className="-ml-0.5 h-5 w-5" aria-hidden="true" />
-                            Purchase as Gift
-
-                        </button>
-                    </div>
+    <button
+      type="button"
+      className="mt-4 sm:mt-0 bg-[#114f45] flex items-center justify-center rounded-full px-3 py-3 text-white hover:bg-[#edc701]"
+    >
+      <ShoppingBagIcon className="-ml-0.5 h-5 w-5" aria-hidden="true" />
+      Purchase as Gift
+    </button>
+  </div>
+</div>
 
                   
                  
