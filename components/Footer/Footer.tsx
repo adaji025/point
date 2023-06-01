@@ -4,39 +4,23 @@ import Link from "next/link";
 
 import Logo from "../../assets/images/logo/logocolor.png"
 
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
+
+
 const navigation = {
     solutions: [
       { name: 'Marketing', href: '#' },
       { name: 'Analytics', href: '#' },
       { name: 'Commerce', href: '#' },
-      { name: 'Insights', href: '#' },
     ],
     support: [
       { name: 'Pricing', href: '#' },
       { name: 'Documentation', href: '#' },
       { name: 'Guides', href: '#' },
-      { name: 'API Status', href: '#' },
     ],
     company: [
       { name: 'About', href: '#' },
       { name: 'Blog', href: '#' },
       { name: 'Jobs', href: '#' },
-      { name: 'Press', href: '#' },
-      { name: 'Partners', href: '#' },
     ],
     legal: [
       { name: 'Claim', href: '#' },
@@ -114,7 +98,7 @@ const navigation = {
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>
-        <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
+        <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-16">
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <Image
               className="w-40"
