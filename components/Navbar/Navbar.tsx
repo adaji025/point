@@ -6,7 +6,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import CountrySelector from "../Util/selector";
 import { COUNTRIES } from "../Util/lib/countries";
 import { SelectMenuOption } from "../Util/lib/types";
-
+import Link from 'next/link';
 import Image from 'next/image';
 
 import Logo from "../../assets/images/logo/logocolor.png"
@@ -288,9 +288,9 @@ export default function Navbar() {
                 <div className="flex h-16 items-center justify-between">
                   {/* Logo (lg+) */}
                   <div className="hidden lg:flex lg:items-center">
-                    <a href="#">
+                    <Link href="/">
                     <Image className='w-24' src={Logo} alt="points" />
-                    </a>
+                    </Link>
                   </div>
 
                   <div className="flex flex-1 justify-center px-2 lg:ml-6 lg:justify-end">
@@ -468,9 +468,9 @@ export default function Navbar() {
                   </div>
 
                   {/* Logo (lg-) */}
-                  <a href="#" className="lg:hidden">
+                  <Link href="/" className="lg:hidden">
                   <Image className='w-24' src={Logo} alt="points" />
-                  </a>
+                  </Link>
 
                   <div className="flex flex-1 items-center justify-end">
                     <div className="flex items-center lg:ml-8">
