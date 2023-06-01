@@ -25,3 +25,9 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+
+ /* Custom CSS */
+ .hide-dropdown-arrow::before {
+  display: none !important;
+ }
