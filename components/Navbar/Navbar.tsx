@@ -77,7 +77,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [isOpen, setIsOpen] = useState(false);
   // Default this to a country's code to preselect it
-  const [country, setCountry] = useState<SelectMenuOption["value"]>("BE");
+  // Default this to a country's code to preselect it
+  const [country, setCountry] = useState('NG');
 
   return (
     <div className="bg-white">
@@ -225,16 +226,17 @@ export default function Navbar() {
                 <div className="group relative text-black rounded-full border-transparent bg-none ">
                   
                 <div>
-        <label className="block hidden text-sm font-medium text-gray-700">
+        <label className="hidden text-sm font-medium text-gray-700">
           Select a country
         </label>
         <CountrySelector
-          id={"country-selector"}
-          open={isOpen}
-          onToggle={() => setIsOpen(!isOpen)}
-          onChange={setCountry}
-          selectedValue={COUNTRIES.find((option) => option.value === country)}
-        />
+      id={'countries'}
+      open={isOpen}
+      onToggle={() => setIsOpen(!isOpen)}
+      onChange={val => setCountry(val)}
+      // We use this type assertion because we are always sure this find will return a value but need to let TS know since it could technically return null
+      selectedValue={COUNTRIES.find(option => option.value === country) as SelectMenuOption} 
+    />
       </div>
                 
                   </div>
@@ -264,12 +266,13 @@ export default function Navbar() {
           Select a country
         </label>
         <CountrySelector
-          id={"country-selector"}
-          open={isOpen}
-          onToggle={() => setIsOpen(!isOpen)}
-          onChange={setCountry}
-          selectedValue={COUNTRIES.find((option) => option.value === country)}
-        />
+      id={'countries'}
+      open={isOpen}
+      onToggle={() => setIsOpen(!isOpen)}
+      onChange={val => setCountry(val)}
+      // We use this type assertion because we are always sure this find will return a value but need to let TS know since it could technically return null
+      selectedValue={COUNTRIES.find(option => option.value === country) as SelectMenuOption} 
+    />
       </div>
                 
                   </div>
