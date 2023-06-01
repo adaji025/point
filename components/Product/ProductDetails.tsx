@@ -30,6 +30,49 @@ function classNames(...classes: string[]) {
 
 `}</style>
 
+
+const products = [
+    {
+    id: 1,
+    name: 'Mtn',
+    href: '/recharge',
+    price: '50 NGN - 50000 NGN',
+    availability: 'White and Black',
+    imageSrc: 'https://images.africanfinancials.com/63be93ed-ng-mtn-logo-200x200.png',
+    imageAlt: 'White fabric pouch with white zipper, black zipper pull, and black elastic loop.',
+  },
+  {
+    id: 2,
+    name: 'Airtel',
+    href: '#',
+    price: '50 NGN - 50000 NGN',
+    availability: 'Washed Black',
+    imageSrc: 'https://www.businesslist.com.ng/img/ng/e/1604481877-59-airtel-nigeria-customer-care.jpg',
+    imageAlt: 'Front of tote bag with washed black canvas body, black straps, and tan leather handles and accents.',
+  },
+  {
+    id: 3,
+    name: 'Glo',
+    href: '#',
+    price: '50 NGN - 50000 NGN',
+    availability: 'Washed Black',
+    imageSrc: 'https://netstorage-legit.akamaized.net/images/a3d8cbb3f3a7b1d6.jpg?imwidth=720',
+    imageAlt: 'Front of tote bag with washed black canvas body, black straps, and tan leather handles and accents.',
+  },
+
+  {
+    id: 4,
+    name: '9mobile',
+    href: '#',
+    price: '50 NGN - 50000 NGN',
+    availability: 'Washed Black',
+    imageSrc: 'https://9mobile.com.ng/wp-content/uploads/2023/02/9xtra-all-channels-600x601.png',
+    imageAlt: 'Front of tote bag with washed black canvas body, black straps, and tan leather handles and accents.',
+  },
+  // More products...
+  ]
+  
+
 export default function ProductDetails() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
@@ -39,7 +82,7 @@ export default function ProductDetails() {
             <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
             <div className="rounded-lg md:w-2/3 sticky top-0">
   <div className="justify-center h-full mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
-    <img src="https://images.africanfinancials.com/63be93ed-ng-mtn-logo-200x200.png" alt="product-image" className="w-52 h-52 rounded-lg" />
+    <img src="https://images.africanfinancials.com/63be93ed-ng-mtn-logo-200x200.png" alt="product-image" className="max-w-md py-6 px-8 rounded-lg" />
   </div>
 </div>
                 <div className="mt-6 h-full rounded-lg p-6 md:mt-0 md:w-2/3 overflow-y-auto">
@@ -122,6 +165,43 @@ export default function ProductDetails() {
                 </div>
             </div>
          
+
+ 
+
+            <div>
+  <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+    <h2 className="text-2xl font-bold tracking-tight text-gray-900">More products on Points</h2>
+
+    <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+      {products.map((product) => (
+        <div key={product.id} className="group relative">
+          <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 ">
+            <img
+              src={product.imageSrc}
+              alt={product.imageAlt}
+              className="w-full object-cover object-center lg:w-full"
+            />
+          </div>
+          <div className="mt-4 flex justify-between">
+            <div>
+              <h3 className="font-bold text-black">
+                <a href={product.href}>
+                  <span aria-hidden="true" className="absolute inset-0" />
+                  {product.name}
+                </a>
+              </h3>
+
+            <p className="text-sm font-medium text-gray-900">{product.price}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+ 
+
         </div>
 
     )
