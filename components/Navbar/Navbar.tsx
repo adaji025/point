@@ -1,7 +1,7 @@
-"use client"; // This is a client component 👈🏽
+"use client"; 
 import { Fragment, useState } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
-import { Bars3Icon, MagnifyingGlassIcon, ShoppingCartIcon, UserIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, MagnifyingGlassIcon, ShoppingCartIcon, QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import CountrySelector from "../Util/selector";
 import { COUNTRIES } from "../Util/lib/countries";
@@ -20,7 +20,7 @@ const navigation = {
         { name: 'GLO', href: '#' },
         { name: 'AIRTEL', href: '#' },
       ],
-       country: [
+      country: [
         { name: 'DSTV', href: '#' },
         { name: 'MTN Data', href: '#' },
         { name: 'GLO', href: '#' },
@@ -37,7 +37,7 @@ const navigation = {
         { name: 'AEDC', href: '#' },
         { name: 'MTN', href: '#' },
         { name: 'AIRTEL', href: '#' },
-        
+
       ],
     },
     {
@@ -69,7 +69,7 @@ const navigation = {
 
 
 
-function classNames(...classes: string []) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
@@ -222,29 +222,29 @@ export default function Navbar() {
                     </div>
                   ))}
 
-<div className="space-y-6 lg:flex lg:flex-1 lg:items-center lg:justify-end ">
-                <div className="group relative text-black rounded-full border-transparent bg-none ">
-                  
-                <div>
-        <label className="hidden text-sm font-medium text-gray-700">
-          Select a country
-        </label>
-        <CountrySelector
-      id={'countries'}
-      open={isOpen}
-      onToggle={() => setIsOpen(!isOpen)}
-      onChange={val => setCountry(val)}
-      // We use this type assertion because we are always sure this find will return a value but need to let TS know since it could technically return null
-      selectedValue={COUNTRIES.find(option => option.value === country) as SelectMenuOption} 
-    />
-      </div>
-                
-                  </div>
+                  <div className="space-y-6 lg:flex lg:flex-1 lg:items-center lg:justify-end ">
+                    <div className="group relative text-black rounded-full border-transparent bg-none ">
 
-              </div>
+                      <div>
+                        <label className="hidden text-sm font-medium text-gray-700">
+                          Select a country
+                        </label>
+                        <CountrySelector
+                          id={'countries'}
+                          open={isOpen}
+                          onToggle={() => setIsOpen(!isOpen)}
+                          onChange={val => setCountry(val)}
+                          // We use this type assertion because we are always sure this find will return a value but need to let TS know since it could technically return null
+                          selectedValue={COUNTRIES.find(option => option.value === country) as SelectMenuOption}
+                        />
+                      </div>
+
+                    </div>
+
+                  </div>
                 </div>
 
-             
+
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -257,27 +257,35 @@ export default function Navbar() {
           <div className="bg-[#114f45]">
             <div className="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
               {/* Country selector */}
-             
-              <div style={{marginTop: "-20px"}} className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end ">
+
+              <div style={{ marginTop: "-20px" }} className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end ">
                 <div className="group relative  rounded-full border-transparent bg-none ">
-                  
-                <div>
-        <label className="block text-sm font-medium text-gray-700">
-          Select a country
-        </label>
-        <CountrySelector
-      id={'countries'}
-      open={isOpen}
-      onToggle={() => setIsOpen(!isOpen)}
-      onChange={val => setCountry(val)}
-      // We use this type assertion because we are always sure this find will return a value but need to let TS know since it could technically return null
-      selectedValue={COUNTRIES.find(option => option.value === country) as SelectMenuOption} 
-    />
-      </div>
-                
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Select a country
+                    </label>
+                    <CountrySelector
+                      id={'countries'}
+                      open={isOpen}
+                      onToggle={() => setIsOpen(!isOpen)}
+                      onChange={val => setCountry(val)}
+                      // We use this type assertion because we are always sure this find will return a value but need to let TS know since it could technically return null
+                      selectedValue={COUNTRIES.find(option => option.value === country) as SelectMenuOption}
+                    />
                   </div>
 
+                  
+
+                </div>
+
               </div>
+
+              <Link href="#" className="flex font-bold text-sm items-center text-white hover:text-[#eecb25]">
+  <QuestionMarkCircleIcon className="h-6 w-6 mr-1" />
+  <span className="ml-1">Help</span>
+</Link>
+
             </div>
           </div>
 
@@ -289,29 +297,28 @@ export default function Navbar() {
                   {/* Logo (lg+) */}
                   <div className="hidden lg:flex lg:items-center">
                     <Link href="/">
-                    <Image className='w-24' src={Logo} alt="points" />
+                      <Image className='w-24' src={Logo} alt="points" />
                     </Link>
                   </div>
 
-                  <div className="flex flex-1 justify-center px-2 lg:ml-6 lg:justify-end">
-                      <div className="w-full max-w-lg lg:max-w-xs">
-                        <label htmlFor="search" className="sr-only">
-                          Search
-                        </label>
-                        <div className="relative text-gray-400 focus-within:text-[#114f45]">
-                          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                            <MagnifyingGlassIcon className="h-5 w-5" aria-hidden="true" />
-                          </div>
-                          <input
-                            id="search"
-                            className="block w-full rounded-full border-0 bg-[#e5e8e8] py-1.5 pl-10 pr-3 text-gray-900  focus:ring-offset-1 focus:ring-offset-black sm:text-sm sm:leading-6"
-                            placeholder="Search for gift cards or bills"
-                            type="search"
-                            name="search"
-                          />
-                        </div>
+                  <div className="w-full lg:ml-5 max-w-lg lg:max-w-xs hidden sm:block">
+                    <label htmlFor="search" className="sr-only">
+                      Search
+                    </label>
+                    <div className="relative text-gray-400 focus-within:text-[#2a7671]">
+                      <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                        <MagnifyingGlassIcon className="h-5 w-5" aria-hidden="true" />
                       </div>
+                      <input
+                        id="search"
+                        className="block w-full rounded-full border-0 bg-[#e5e8e8] py-1.5 pl-10 pr-3 text-gray-900  focus:ring-offset-1 focus:ring-offset-black sm:text-sm sm:leading-6"
+                        placeholder="Search for gift cards or bills"
+                        type="search"
+                        name="search"
+                      />
                     </div>
+                  </div>
+
 
                   <div className="hidden h-full lg:flex">
                     {/* Mega menus */}
@@ -445,7 +452,7 @@ export default function Navbar() {
                         ))}
                       </div>
 
-                      
+
                     </Popover.Group>
                   </div>
 
@@ -457,62 +464,66 @@ export default function Navbar() {
                       onClick={() => setOpen(true)}
                     >
                       <span className="sr-only">Open menu</span>
-                      <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+                      <Bars3Icon className="h-8 w-8" aria-hidden="true" />
                     </button>
 
-                    {/* Search */}
-                    <a href="#" className="ml-2 p-2 text-gray-400 hover:text-gray-500">
-                      <span className="sr-only">Search</span>
-                      <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
-                    </a>
+                    {/* Logo (lg-) */}
+                    <Link href="/" className="lg:hidden">
+                      <Image className='ml-3 w-24' src={Logo} alt="points" />
+                    </Link>
+
+
                   </div>
 
-                  {/* Logo (lg-) */}
-                  <Link href="/" className="lg:hidden">
-                  <Image className='w-24' src={Logo} alt="points" />
-                  </Link>
+
 
                   <div className="flex flex-1 items-center justify-end">
                     <div className="flex items-center lg:ml-8">
-                      
+                      {/* Search */}
+                      <div className="lg:hidden block">
+                        <a href="#" className=" ml-2 p-2 text-gray-400 hover:text-gray-500">
+                          <span className="sr-only">Search</span>
+                          <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
+                        </a>
+                      </div>
 
-                      <span className="mx-4 h-6 w-px bg-gray-200 lg:mx-6" aria-hidden="true" />
-                      <div className="flow-root">
-                      
+
+                      <div className="flow-root ml-5">
+
                         <Popover.Group>
-                      <Popover className="relative">
-            <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
-            <ShoppingCartIcon
-                            className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                            aria-hidden="true"
-                          />
-                          <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
-                          <span className="sr-only">items in cart, view bag</span>
-              <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
-            </Popover.Button>
+                          <Popover className="relative">
+                            <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
+                              <ShoppingCartIcon
+                                className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                                aria-hidden="true"
+                              />
+                              <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
+                              <span className="sr-only">items in cart, view bag</span>
+                              <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
+                            </Popover.Button>
 
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-200"
-              enterFrom="opacity-0 translate-y-1"
-              enterTo="opacity-100 translate-y-0"
-              leave="transition ease-in duration-150"
-              leaveFrom="opacity-100 translate-y-0"
-              leaveTo="opacity-0 translate-y-1"
-            >
-              <Popover.Panel className="absolute -left-52 top-full z-30 mt-3 w-78 rounded-3xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
-                  <div className="relative rounded-lg p-4 hover:bg-gray-50">
-                    <a className="block text-sm font-semibold leading-6 text-gray-900">
-                    Your cart is empty
-                      <span className="absolute inset-0" />
-                    </a>
-                    <p className="mt-1 text-sm leading-6 text-gray-600">
-Looks like you haven't added anything to your cart yet</p>
-                  </div>
-              </Popover.Panel>
-            </Transition>
-          </Popover>
-        </Popover.Group>
+                            <Transition
+                              as={Fragment}
+                              enter="transition ease-out duration-200"
+                              enterFrom="opacity-0 translate-y-1"
+                              enterTo="opacity-100 translate-y-0"
+                              leave="transition ease-in duration-150"
+                              leaveFrom="opacity-100 translate-y-0"
+                              leaveTo="opacity-0 translate-y-1"
+                            >
+                              <Popover.Panel className="absolute -left-52 top-full z-30 mt-3 w-78 rounded-3xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
+                                <div className="relative rounded-lg p-4 hover:bg-gray-50">
+                                  <a className="block text-sm font-semibold leading-6 text-gray-900">
+                                    Your cart is empty
+                                    <span className="absolute inset-0" />
+                                  </a>
+                                  <p className="mt-1 text-sm leading-6 text-gray-600">
+                                    Looks like you haven't added anything to your cart yet</p>
+                                </div>
+                              </Popover.Panel>
+                            </Transition>
+                          </Popover>
+                        </Popover.Group>
                       </div>
                     </div>
                   </div>
