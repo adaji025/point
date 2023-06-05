@@ -1,12 +1,9 @@
 "use client";
-import { Fragment, useState } from 'react'
-import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
+import { useState } from 'react'
+import { ShoppingBagIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
+
 import Link from 'next/link';
-import { Disclosure, RadioGroup, Tab } from '@headlessui/react'
-import { StarIcon } from '@heroicons/react/20/solid'
-import { HeartIcon } from '@heroicons/react/24/outline'
+
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
@@ -77,6 +74,11 @@ export default function ProductDetails() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
+    const handleAddToCart = () => {
+      // Logic for adding item to cart
+      console.log(`Item ${products} added to cart`);
+    };
+
     return (
         <div className="bg-gray-100 pt-20">
             <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
@@ -102,7 +104,7 @@ export default function ProductDetails() {
                                     type="text"
                                     name="email"
                                     id="email"
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
+                                    className="block w-full placeholder:text-2xl rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
                                     placeholder="N 5 - 5000"
                                 />
                             </div>
@@ -133,7 +135,7 @@ export default function ProductDetails() {
                                     type="text"
                                     name="phonenumber"
                                     id="number"
-                                    className="block w-full placeholder:text-2xl rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="block w-full placeholder:text-2xl rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
                                     placeholder="08100135069"
                                 />
                             </div>
@@ -142,7 +144,7 @@ export default function ProductDetails() {
                     <hr className="my-4" />
                     <div className="mt-10 flex flex-col sm:flex-row">
   <div className="flex flex-col sm:flex-row">
-    <button
+    <button 
       type="submit"
       className="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent bg-[#114f45] px-8 py-3 text-base font-medium text-white hover:bg-[#edc701] focus:outline-none focus:ring-2 focus:ring-[#114f45] focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full sm:mr-4"
     >
@@ -185,10 +187,10 @@ export default function ProductDetails() {
           <div className="mt-4 flex justify-between">
             <div>
               <h3 className="font-bold text-black">
-                <a href={product.href}>
+                <Link href={product.href}>
                   <span aria-hidden="true" className="absolute inset-0" />
                   {product.name}
-                </a>
+                </Link>
               </h3>
 
             <p className="text-sm font-medium text-gray-900">{product.price}</p>
