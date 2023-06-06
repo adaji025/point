@@ -2,15 +2,20 @@ import GiftCard from "@/components/Home/GiftCard";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import Faq from "@/components/Faq/Faq";
-import Script from 'next/script';
+import Script from "next/script";
+import Hero from "@/components/Home/Hero";
+import TopGiftCard from "@/components/Home/TopGiftCard";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
       <main className="grow">
-      <>
-      <Script src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js" strategy="worker" />
-      <script
+        <>
+          <Script
+            src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"
+            strategy="worker"
+          />
+          <script
             dangerouslySetInnerHTML={{
               __html: `
     
@@ -34,16 +39,14 @@ export default function Home() {
       },
     }));
   });
-  `
-}}
-/>
-    </>
-        <Navbar />
-        <GiftCard/>
-        <Faq/>
-        <Footer/>
+  `,
+            }}
+          />
+        </>
+        <Hero />
+        <TopGiftCard />
+        <Faq />
       </main>
     </div>
-
-  )
+  );
 }
