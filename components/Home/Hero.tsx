@@ -15,11 +15,11 @@ const Hero = () => {
           Pay for your daily needs with Bitcoin, ETH and more cryptocurrencies
         </p>
         <div className="mt-10 flex justify-center gap-5 ">
-          <button className="bg-white py-2 px-6 rounded-[20px] flex items-center justify-center gap-2 text-primary">
+          <button className="bg-white py-2 px-6 rounded-[20px] flex items-center justify-center gap-2 text-primary hover:scale-105 transition-all duration-300">
             <span>Giftcards</span>
             <BsArrowRightShort size={20} />
           </button>
-          <button className="bg-white py-2 px-6 rounded-[20px] flex items-center justify-center gap-2 text-primary">
+          <button className="bg-white py-2 px-6 rounded-[20px] flex items-center justify-center gap-2 text-primary hover:scale-105 transition-all duration-300">
             <span>Giftcards</span>
             <BsArrowRightShort size={20} />
           </button>
