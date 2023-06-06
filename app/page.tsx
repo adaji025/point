@@ -5,6 +5,9 @@ import Faq from "@/components/Faq/Faq";
 import Script from "next/script";
 import Hero from "@/components/Home/Hero";
 import TopGiftCard from "@/components/Home/TopGiftCard";
+import Game from "@/components/Home/Game";
+import Testimony from "@/components/Home/Testimony";
+import Collection from "@/components/Home/Collection";
 
 export default function Home() {
   return (
@@ -45,6 +48,9 @@ export default function Home() {
         </>
         <Hero />
         <TopGiftCard />
+        <Game />
+        <Testimony />
+        <Collection />
         <Faq />
       </main>
     </div>
