@@ -98,16 +98,36 @@ const TopGiftCard = () => {
           }}
           modules={[Navigation]}
           breakpoints={{
+            360: {
+              slidesPerView: 1.1,
+              spaceBetween: 20,
+            },
             400: {
+              slidesPerView: 1.2,
+              spaceBetween: 20,
+            },
+            450: {
+              slidesPerView: 1.5,
+              spaceBetween: 20,
+            },
+            500: {
               slidesPerView: 1.7,
               spaceBetween: 20,
             },
             640: {
-              slidesPerView: 2.3,
+              slidesPerView: 2.2,
+              spaceBetween: 20,
+            },
+            750: {
+              slidesPerView: 2.5,
+              spaceBetween: 20,
+            },
+            800: {
+              slidesPerView: 2.7,
               spaceBetween: 20,
             },
             900: {
-              slidesPerView: 3.6,
+              slidesPerView: 3.2,
               spaceBetween: 40,
             },
             1240: {
