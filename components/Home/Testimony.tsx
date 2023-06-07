@@ -1,8 +1,7 @@
 "use client";
 
 import React from "react";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { BsStarFill } from "react-icons/bs";
+import {ChevronLeftIcon, ChevronRightIcon} from '@heroicons/react/24/outline'
 import Link from "next/link";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -51,13 +50,13 @@ const Testimony = () => {
             className="h-[42px] w-[42px] rounded-full bg-black/20 flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-105"
             ref={navigationPrevRef}
           >
-            <FiChevronLeft />
+            <ChevronLeftIcon className="h-5 w-5" />
           </div>
           <div
             className="h-[42px] w-[42px] rounded-full bg-black/20 flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-105"
             ref={navigationNextRef}
           >
-            <FiChevronRight />
+            <ChevronRightIcon className="h-5 w-5" />
           </div>
         </div>
       </div>

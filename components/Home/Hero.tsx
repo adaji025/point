@@ -1,6 +1,6 @@
 import React from "react";
-import {BsArrowRightShort} from "react-icons/bs"
-import styles from "./Home.module.css";
+import {ArrowRightIcon} from '@heroicons/react/24/outline'
+import styles from "../../styles/Home.module.css";
 
 const Hero = () => {
   return (
@@ -15,13 +15,13 @@ const Hero = () => {
           Pay for your daily needs with Bitcoin, ETH and more cryptocurrencies
         </p>
         <div className="mt-10 flex justify-center gap-5 ">
-          <button className="bg-white py-2 px-6 rounded-[20px] flex items-center justify-center gap-2 text-primary hover:scale-105 transition-all duration-300">
-            <span>Giftcards</span>
-            <BsArrowRightShort size={20} />
+          <button className="bg-white py-2 px-8 rounded-[20px] flex items-center justify-center gap-2 text-primary hover:scale-105 transition-all duration-300">
+            <span className="font-semibold">Giftcards</span>
+            <ArrowRightIcon className="h-5 w-5"  />
           </button>
           <button className="bg-white py-2 px-6 rounded-[20px] flex items-center justify-center gap-2 text-primary hover:scale-105 transition-all duration-300">
-            <span>Giftcards</span>
-            <BsArrowRightShort size={20} />
+            <span className="font-semibold">Phone Refills</span>
+            <ArrowRightIcon className="h-5 w-5" />  
           </button>
         </div>
       </div>
