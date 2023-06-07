@@ -106,15 +106,15 @@ export default function ProductDetails() {
               </p>
             </div>
           </div>
-          <div className="flex mt-5 justify-between">
-            <div className="w-full sm:w-2/3">
+          <div className="flex gap-2 mt-5 justify-between items-center w-full">
+            <div className="w-2/3">
               <label
                 htmlFor="email"
                 className="block placeholder:text-2xl  text-1xl font-bold leading-6 text-gray-900"
               >
                 Enter amount
               </label>
-              <div className="mt-2 bg-white shadow-inner">
+              <div className="mt-2 bg-white shadow-inner w-full">
                 <input
                   type="text"
                   name="email"
@@ -124,23 +124,25 @@ export default function ProductDetails() {
                 />
               </div>
             </div>
-            <div className="w-full sm:w-1/3 mt-4 sm:mt-0 sm:ml-4">
+            <div className="w-1/3">
               <label
                 htmlFor="location"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Estimated Price
               </label>
-              <select
-                id="location"
-                name="location"
-                className="mt-2 block w-full p-3 pr-10 border-none text-gray-900 sm:text-sm sm:leading-6"
-                defaultValue="Canada"
-              >
-                <option>USD $4.99</option>
-                <option>EURO $4.99</option>
-                <option>BTC $4.99</option>
-              </select>
+              <div className="bg-white shadow-inner rounded-lg">
+                <select
+                  id="location"
+                  name="location"
+                  className="mt-2 block w-full p-3 pr-10 border-none text-gray-900 sm:text-sm rounded-lg shadow"
+                  defaultValue="Canada"
+                >
+                  <option>USD $4.99</option>
+                  <option>EURO $4.99</option>
+                  <option>BTC $4.99</option>
+                </select>
+              </div>
             </div>
           </div>
           <div className="flex mt-4 justify-between">

@@ -4,16 +4,16 @@ import Footer from "@/components/Footer/Footer";
 
 export default function CheckoutPage() {
   return (
-    <div className="flex flex-col min-h-screen overflow-hidden">
-      <main className="grow">
+    <>
       <Head>
         <title> Shopping Cart - Points</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        <Navbar />
-        <Footer/>
-      </main>
-    </div>
-
-  )
+      <div className="flex flex-col min-h-screen overflow-hidden">
+        <main className="grow">
+          <div className="w-screen"></div>
+        </main>
+      </div>
+    </>
+  );
 }
