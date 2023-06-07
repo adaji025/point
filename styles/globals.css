@@ -2,15 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
 body {
-  
+  color: #002b28;
 }
 
-
- /* Custom CSS */
- .hide-dropdown-arrow::before {
+/* Custom CSS */
+.hide-dropdown-arrow::before {
   display: none !important;
- }
+}
