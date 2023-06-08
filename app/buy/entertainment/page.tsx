@@ -1,13 +1,15 @@
+import Faq from "@/components/Faq/Faq";
+import HowItWorks from "@/components/buy/HowItWorks";
 import { ChevronDownIcon, StarIcon } from "@heroicons/react/24/outline";
 import React from "react";
 
 const Card = () => {
   return (
-    <div className="w-full  min-h-[300px] pr-1">
+    <div className="w-full  min-h-[300px]">
       <img
         src="/images/uber.jpg"
         alt=""
-        className="w-full h-[200px] hover:scale-105 transition-all duration-300"
+        className="w-full h-[200px] hover:scale-105 transition-all duration-300 shadow-sm"
       />
       <div className="flex justify-between">
         <div className="mt-2 grid">
@@ -71,14 +73,9 @@ const Entertainment = () => {
           <span className="underline cursor-pointer">Request a product</span>
         </div>
       </div>
-      <div className="mt-10">
-        <span className="font-bold text-[24px] sm:text-[42px] block">
-          How gift cards work
-        </span>
-        <div className="mt-5 flex flex-wrap">
-          
-        </div>
-      </div>
+
+      <HowItWorks />
+      <Faq />
     </div>
   );
 };
