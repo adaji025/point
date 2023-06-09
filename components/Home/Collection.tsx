@@ -10,13 +10,16 @@ type CardProps = {
 };
 
 const Card = ({ item }: CardProps) => {
+
   return (
-    <div className="max-w-[400px] h-[300px] xl:h-[450px] relative cursor-pointer hover:scale-105 transition-all duration-300 mx-auto">
-      <img src={item.image} className="w-full h-full object-cover" alt="" />
-      <div className="font-bold text-2xl text-white text-center bg-black/50 p-4 absolute top-10 w-full">
-        {item.title}
+    <Link href={item.link}>
+      <div className="max-w-[400px] h-[300px] xl:h-[450px] relative cursor-pointer hover:scale-105 transition-all duration-300 mx-auto">
+        <img src={item.image} className="w-full h-full object-cover" alt="" />
+        <div className="font-bold text-2xl text-white text-center bg-black/50 p-4 absolute top-10 w-full">
+          {item.title}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
@@ -24,17 +27,17 @@ const collectionData = [
   {
     title: "Game",
     image: "/images/game.jpg",
-    link: "",
+    link: "/buy/game",
   },
   {
     title: "Travels",
     image: "/images/entertainment.jpg",
-    link: "",
+    link: "/buy/travels",
   },
   {
     title: "Entertainment",
     image: "/images/travels.jpg",
-    link: "",
+    link: "/buy/entertainment",
   },
 ];
 
