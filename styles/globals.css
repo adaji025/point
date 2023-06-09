@@ -3,10 +3,23 @@
 @tailwind utilities;
 
 
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
 
 body {
+    font-family: 'Inter', sans-serif;
   
+}
+
+
+h1{
+    font-family: 'Inter', sans-serif;
+}
+
+h2{
+    font-family: 'Inter', sans-serif;
+}
+p{
+    font-family: 'Inter', sans-serif;
 }
 
 
@@ -14,3 +27,5 @@ body {
  .hide-dropdown-arrow::before {
   display: none !important;
  }
+
+ 
