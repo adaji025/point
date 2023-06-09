@@ -1,4 +1,3 @@
-import GiftCard from "@/components/Home/GiftCard";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import Faq from "@/components/Faq/Faq";
@@ -8,6 +7,8 @@ import TopGiftCard from "@/components/Home/TopGiftCard";
 import Game from "@/components/Home/Game";
 import Testimony from "@/components/Home/Testimony";
 import Collection from "@/components/Home/Collection";
+
+
 
 export default function Home() {
   return (
@@ -25,11 +26,6 @@ export default function Home() {
   document.addEventListener("alpine:init", () => {
     Alpine.data("imageSlider", () => ({
       currentIndex: 1,
-      images: [
-        "https://unsplash.it/640/425?image=30",
-        "https://unsplash.it/640/425?image=40",
-        "https://unsplash.it/640/425?image=50",
-      ],
       previous() {
         if (this.currentIndex > 1) {
           this.currentIndex = this.currentIndex - 1;
@@ -46,12 +42,14 @@ export default function Home() {
             }}
           />
         </>
+        <Navbar/>
         <Hero />
         <TopGiftCard />
         <Game />
         <Testimony />
         <Collection />
         <Faq />
+        <Footer/>
       </main>
     </div>
   );
