@@ -1,5 +1,5 @@
-import Checkout from "@/components/Checkout/Checkout";
 import CheckoutNavbar from "@/components/Navbar/CheckoutNavbar";
+import PaymentMethod from "@/components/PaymentMethod/PaymentMethod";
 
 
 export const metadata = {
@@ -7,13 +7,13 @@ export const metadata = {
 };
 
 
-export default function CheckoutPage() {
+export default function PaymentPage() {
   return (
     <>
       <div className="flex flex-col min-h-screen overflow-hidden">
         <main className="grow">
           <CheckoutNavbar/>
-          <Checkout />
+          <PaymentMethod/>
         </main>
       </div>
     </>

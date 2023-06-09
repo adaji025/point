@@ -2,11 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
 body {
-  color: #002b28;
+    font-family: 'Inter', sans-serif;
+  
 }
 
-/* Custom CSS */
-.hide-dropdown-arrow::before {
-  display: none !important;
+
+h1{
+    font-family: 'Inter', sans-serif;
 }
+
+h2{
+    font-family: 'Inter', sans-serif;
+}
+p{
+    font-family: 'Inter', sans-serif;
+}
+
+
+ /* Custom CSS */
+ .hide-dropdown-arrow::before {
+  display: none !important;
+ }
+
+ 
