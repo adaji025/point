@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ShoppingBagIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 import Link from "next/link";
+import EstimateDropdown from "./EstimateDropdown";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -86,15 +87,15 @@ export default function ProductDetails() {
     <div className="bg-gray-100 pt-20">
       <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
         <div className="rounded-lg md:w-2/3 sticky top-0">
-          <div className="justify-center h-full mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
+          <div className="justify-center items-center h-full mb-6 rounded-lg bg-white p-6 shadow-md flex ">
             <img
               src="https://images.africanfinancials.com/63be93ed-ng-mtn-logo-200x200.png"
               alt="product-image"
-              className="max-w-md py-6 px-8 rounded-lg"
+              className="py-6 px-8 rounded-lg w-[400px] h-[400px]"
             />
           </div>
         </div>
-        <div className="mt-6 h-full rounded-lg p-6 md:mt-0 md:w-2/3 overflow-y-auto">
+        <div className="mt-6 h-full rounded-lg p-6 md:mt-0 md:w-2/3">
           <div className="mb-2 flex justify-between">
             <div className="mt-5 sm:mt-0">
               <h2 className="text-2xl font-bold text-gray-900">MTN Refill</h2>
@@ -110,7 +111,7 @@ export default function ProductDetails() {
             <div className="w-2/3">
               <label
                 htmlFor="email"
-                className="block placeholder:text-2xl  text-1xl font-bold leading-6 text-gray-900"
+                className="block font-bold leading-6 text-gray-900"
               >
                 Enter amount
               </label>
@@ -119,7 +120,7 @@ export default function ProductDetails() {
                   type="text"
                   name="email"
                   id="email"
-                  className="w-full outline-none border-0 shadow p-3 rounded-lg"
+                  className="w-full outline-none border-0 shadow p-3 rounded-lg focus:ring-offset-1 focus:ring-offset-black placeholder:font-bold"
                   placeholder="N 5 - 5000"
                 />
               </div>
@@ -127,22 +128,11 @@ export default function ProductDetails() {
             <div className="w-1/3">
               <label
                 htmlFor="location"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block sm:text-sm md:text-xs lg:text-sm mb-3 font-medium leading-6 text-gray-900"
               >
                 Estimated Price
               </label>
-              <div className="bg-white shadow-inner rounded-lg">
-                <select
-                  id="location"
-                  name="location"
-                  className="mt-2 block w-full p-3 pr-10 border-none text-gray-900 sm:text-sm rounded-lg shadow"
-                  defaultValue="Canada"
-                >
-                  <option>USD $4.99</option>
-                  <option>EURO $4.99</option>
-                  <option>BTC $4.99</option>
-                </select>
-              </div>
+              <EstimateDropdown />
             </div>
           </div>
           <div className="flex mt-4 justify-between">
@@ -155,21 +145,23 @@ export default function ProductDetails() {
               </label>
               <div className="mt-2">
                 <input
+                  style={{ outline: 0 }}
                   type="text"
                   name="phonenumber"
                   id="number"
-                  className="w-full outline-none bg-white border-0 shadow p-3 rounded-lg"
+                  className="w-full !outline-none bg-white border-0 shadow p-3 rounded-lg focus:ring-offset-1 focus:ring-offset-black"
                   placeholder="08100135069"
                 />
               </div>
             </div>
           </div>
           <hr className="my-4" />
-          <div className="mt-10 flex flex-col sm:flex-row">
-            <div className="flex flex-col sm:flex-row">
+
+          <div className="flex flex-col gap-5 lg:flex-row mt-10">
+            <div className="w-full lg:w-[60%]">
               <button
                 type="submit"
-                className="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent bg-[#114f45] px-8 py-3 text-base font-medium text-white hover:bg-[#edc701] focus:outline-none focus:ring-2 focus:ring-[#114f45] focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full sm:mr-4"
+                className="text-sm flex w-full flex-1 items-center justify-center rounded-full border border-transparent bg-[#114f45] px-8 py-3 font-medium text-white hover:bg-[#F1F1F1] hover:text-[#114f45] hover:border-[#114f45] focus:outline-none focus:ring-2 focus:ring-[#114f45] focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full sm:mr-4 transition-all duration-300"
               >
                 <ShoppingCartIcon
                   className="-ml-0.5 h-5 w-5"
@@ -177,10 +169,12 @@ export default function ProductDetails() {
                 />
                 Add to cart
               </button>
+            </div>
 
+            <div className="w-full lg:w-[40%]">
               <button
                 type="button"
-                className="mt-4 sm:mt-0 bg-[#114f45] flex items-center justify-center rounded-full px-3 py-3 text-white hover:bg-[#edc701]"
+                className="text-sm w-full bg-[#F1F1F1] flex items-center justify-center rounded-full px-3 py-3 text-[#114f45] border border-[#114f45] hover:bg-[#114f45] hover:text-white transition-all duration-300"
               >
                 <ShoppingBagIcon
                   className="-ml-0.5 h-5 w-5"
