@@ -2,7 +2,8 @@
 import { JSX, SVGProps } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "../../assets/images/logo/logocolor.png";
+import ThemeDropdown from "./ThemeDropdown";
+import { GlobeAltIcon } from "@heroicons/react/24/outline";
 
 const navigation = {
   solutions: [
@@ -92,100 +93,117 @@ const navigation = {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#fafffe]" aria-labelledby="footer-heading">
+    <footer className="bg-black text-white" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-16">
-        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-          <Image className="w-40" src={Logo} alt="Company name" />
-          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900">
-                  Solutions
-                </h3>
-                <ul role="list" className="mt-3 space-y-2">
-                  {navigation.solutions.map((item) => (
-                    <li key={item.name}>
-                      <a
-                        href={item.href}
-                        className="text-base text-gray-600 hover:text-gray-900 hover:underline transition-all duration-300"
-                      >
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-10 md:mt-0">
-                <h3 className="text-lg font-semibold text-gray-900">Support</h3>
-                <ul role="list" className="mt-3 space-y-2">
-                  {navigation.support.map((item) => (
-                    <li key={item.name}>
-                      <a
-                        href={item.href}
-                        className="text-base text-gray-600 hover:text-gray-900 hover:underline transition-all duration-300"
-                      >
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+      <div className="mx-auto max-w-[1400px] px-6 md:px-8 pb-8 pt-16 sm:pt-24 lg:px-16 lg:pt-16">
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 ">
+          <div>
+            <img
+              className="w-40"
+              src="/svgs/point-white.svg"
+              alt="Company name"
+            />
+            <div className="inline-flex items-center gap-2 mt-5">
+              <img src="/images/naija.png" alt="" className="rounded-full" />
+              <span className="text-lg">English</span>
             </div>
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900">Company</h3>
-                <ul role="list" className="mt-3 space-y-2">
-                  {navigation.company.map((item) => (
-                    <li key={item.name}>
-                      <a
-                        href={item.href}
-                        className="text-base text-gray-600 hover:text-gray-900 hover:underline transition-all duration-300"
-                      >
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-10 md:mt-0">
-                <h3 className="text-lg font-semibold leading-6 text-gray-900">
-                  Legal
-                </h3>
-                <ul role="list" className="mt-3 space-y-2">
-                  {navigation.legal.map((item) => (
-                    <li key={item.name}>
-                      <a
-                        href={item.href}
-                        className="text-base text-gray-600 hover:text-gray-900 hover:underline transition-all duration-300"
-                      >
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <br />
+            <div className="inline-flex items-center gap-2 mt-5">
+              <GlobeAltIcon className="h-5 w-full" />
+              <span className="text-lg">English</span>
             </div>
-          </div>
-        </div>
-        <div className="mt-8 border-t border-gray-900/10 pt-8 md:flex md:items-center md:justify-between">
-          <div className="flex space-x-6 md:order-2">
-            {navigation.social.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-gray-400 hover:text-gray-500"
-              >
-                <span className="sr-only">{item.name}</span>
-                <item.icon className="h-6 w-6" aria-hidden="true" />
-              </a>
-            ))}
           </div>
 
-          <p className="mt-8 text-xs leading-5 text-gray-500 md:order-1 md:mt-0">
-            &copy; 2023 Points by Diagon. All rights reserved.
+          <div>
+            <h3 className="text-lg font-semibold">Solutions</h3>
+            <ul role="list" className="mt-3 space-y-2">
+              {navigation.solutions.map((item) => (
+                <li key={item.name}>
+                  <a
+                    href={item.href}
+                    className="text-base  hover:text-gray-300 hover:underline transition-all duration-300"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="mt-10 md:mt-0">
+            <h3 className="text-lg font-extrabold">Support</h3>
+            <ul role="list" className="mt-3 space-y-2">
+              {navigation.support.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    className="text-base hover:text-gray-300 hover:underline transition-all duration-300"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-extrabold">Company</h3>
+            <ul role="list" className="mt-3 space-y-2">
+              {navigation.company.map((item) => (
+                <li key={item.name}>
+                  <a
+                    href={item.href}
+                    className="text-base  hover:text-gray-300 hover:underline transition-all duration-300"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="">
+            <h3 className="text-lg font-extrabold">Legal</h3>
+            <ul role="list" className="mt-3 space-y-2">
+              {navigation.legal.map((item) => (
+                <li key={item.name}>
+                  <a
+                    href={item.href}
+                    className="text-base  hover:text-gray-300 hover:underline transition-all duration-300"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="mt-8 border-t border-gray-900/10 pt-8 lg:pb-20 flex flex-col lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex justify-between gap-6 lg:order-2">
+            <div className="flex items-center gap-2">
+              <h2>Theme</h2>
+              <ThemeDropdown />
+            </div>
+            <div className="flex gap-6 items-center">
+              {navigation.social.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="hover:text-gray-500"
+                >
+                  <span className="sr-only">{item.name}</span>
+                  <item.icon className="h-6 w-6" aria-hidden="true" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <p className="mt-8 text-sm  lg:order-1 lg:mt-0 flex flex-wrap items-center gap-3">
+            &copy; Copyright 2023 .
+            <span className="cursor-pointer">Terms and Conditions</span>
+            <span className="cursor-pointer">Privacy Policy</span>
           </p>
         </div>
       </div>
