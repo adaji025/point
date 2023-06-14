@@ -181,7 +181,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t border-gray-900/10 pt-8 lg:pb-20 flex flex-col lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex justify-between gap-6 lg:order-2">
+          <div className="flex flex-col sm:flex-row justify-between gap-6 lg:order-2">
             <div className="flex items-center gap-2">
               <h2>Theme</h2>
               <ThemeDropdown />
