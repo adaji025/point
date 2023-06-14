@@ -294,7 +294,7 @@ export default function Navbar() {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="border-b border-gray-200">
                 <div className="flex h-16 items-center justify-between">
-                  {/* Logo (lg+) */}
+                  
                   <div className="hidden lg:flex lg:items-center">
                     <Link href="/">
                       <Image className='w-24' src={Logo} alt="points" />
