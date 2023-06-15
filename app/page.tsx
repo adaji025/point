@@ -5,9 +5,10 @@ import Script from "next/script";
 import Hero from "@/components/Home/Hero";
 import TopGiftCard from "@/components/Home/TopGiftCard";
 import Game from "@/components/Home/Game";
-import Testimony from "@/components/Home/Testimony";
 import Collection from "@/components/Home/Collection";
 import TopProduct from "@/components/Home/TopProduct";
+import Partners from "@/components/Home/Partners";
+import CallToAction from "@/components/Home/CallToAction";
 
 
 
@@ -48,7 +49,8 @@ export default function Home() {
         <TopGiftCard />
         <TopProduct />
         <Game />
-        <Testimony />
+        <Partners />
+        <CallToAction />
         <Collection />
         <Faq />
         <Footer/>

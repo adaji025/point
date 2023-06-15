@@ -53,7 +53,7 @@ export default function CountrySelector({
           type="button"
           className={`${
             disabled ? "" : ""
-          } relative  sm:text-black font-bold text-2xl rounded-full  pl-3  py-2 text-left cursor-default focus:outline-none sm:text-sm`}
+          } relative shadow-lg h-[40px] w-[40px] sm:text-black font-bold text-2xl rounded-full  pl-3  py-2 text-left cursor-default focus:outline-none sm:text-sm`}
           aria-haspopup="listbox"
           aria-expanded="true"
           aria-labelledby="listbox-label"

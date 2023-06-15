@@ -14,8 +14,8 @@ const Card = ({ item }: CardProps) => {
   return (
     <Link href={item.link}>
       <div className="max-w-[400px] h-[300px] xl:h-[450px] relative cursor-pointer hover:scale-105 transition-all duration-300 mx-auto">
-        <img src={item.image} className="w-full h-full object-cover" alt="" />
-        <div className="font-bold text-2xl text-white text-center bg-black/50 p-4 absolute top-10 w-full">
+        <img src={item.image} className="w-full h-full object-cover rounded-[20px]" alt="" />
+        <div className="font-bold text-2xl text-white text-center p-4 absolute top-10 w-full">
           {item.title}
         </div>
       </div>
@@ -25,25 +25,26 @@ const Card = ({ item }: CardProps) => {
 
 const collectionData = [
   {
-    title: "Game",
-    image: "/images/game.jpg",
+    title: "Travels",
+    image: "/images/travels.png",
+    link: "/buy/entertainment",
+  },
+  {
+    title: "Utility Bills",
+    image: "/images/utility-bills.png",
     link: "/buy/game",
   },
   {
-    title: "Travels",
-    image: "/images/entertainment.jpg",
+    title: "Airtime to Cash",
+    image: "/images/airtime-to-cash.png",
     link: "/buy/travels",
   },
-  {
-    title: "Entertainment",
-    image: "/images/travels.jpg",
-    link: "/buy/entertainment",
-  },
+ 
 ];
 
 const Collection = () => {
   return (
-    <div className="mt-20 max-w-[1400px] mx-auto px-4 lg:px-8">
+    <div className="mt-20 max-w-[1400px] mx-auto px-6 md:px-8 lg:px-16">
       <Link href="/top-categories">
         <h2 className="text-[32px] font-semibold cursor-pointer">
           Explore More Collections
