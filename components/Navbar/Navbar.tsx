@@ -1,26 +1,22 @@
 "use client";
-import { useState } from "react";
-import {
-  Bars3Icon,
-  MagnifyingGlassIcon,
-  QuestionMarkCircleIcon,
-} from "@heroicons/react/24/outline";
+import React, { useState } from "react";
+import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 import CountrySelector from "../Util/selector";
 import { COUNTRIES } from "../Util/lib/countries";
 import { SelectMenuOption } from "../Util/lib/types";
 import Link from "next/link";
-import Image from "next/image";
 
-import Logo from "../../assets/images/logo/logocolor.png";
 import Cart from "./Cart";
 import MobileMenu from "./MobileMenu";
 import GiftCardDropdown from "./GiftCardDropdown";
-import TopNavigation from "./TopNavigation";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [country, setCountry] = React.useState("NG");
+
+  console.log(country);
 
   return (
     <>
@@ -45,7 +41,11 @@ export default function Navbar() {
             </div>
 
             <Link href="/">
-              <img className="w-16 sm:w-[unset]" src='/svgs/point.svg' alt="points" />
+              <img
+                className="w-16 sm:w-[unset]"
+                src="/svgs/point.svg"
+                alt="points"
+              />
             </Link>
 
             <div className="w-full lg:ml-5 max-w-lg lg:max-w-xs hidden xl:block">
@@ -69,7 +69,7 @@ export default function Navbar() {
 
           <GiftCardDropdown />
 
-          <div className="flex items-center lg:ml-8">
+          <div className="flex items-center gap-3">
             {/* Search */}
             <div className="xl:hidden block">
               <span className="sr-only">Search</span>
@@ -77,6 +77,24 @@ export default function Navbar() {
             </div>
 
             <Cart />
+
+            <div className="w-[40px] h-[40px] rounded-full bg-[#1E1E1E] grid place-items-center">
+              <img src="/svgs/head-set.svg" alt="" />
+            </div>
+            <div className="hidden lg:block">
+              <CountrySelector
+                id={"countries"}
+                open={isOpen}
+                onToggle={() => setIsOpen(!isOpen)}
+                onChange={(val) => setCountry(val)}
+                // We use this type assertion because we are always sure this find will return a value but need to let TS know since it could technically return null
+                selectedValue={
+                  COUNTRIES.find(
+                    (option) => option.value === country
+                  ) as SelectMenuOption
+                }
+              />
+            </div>
           </div>
         </nav>
       </div>

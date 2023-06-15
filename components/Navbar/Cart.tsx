@@ -4,22 +4,22 @@ import { ChevronDownIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 const Cart = () => {
   return (
-    <div className="flow-root ml-5">
+    <div className="flow-root">
       <Popover.Group>
         <Popover className="relative">
-          <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
+          <Popover.Button className="h-[40px] w-[90px] rounded-full flex items-center justify-center gap-2 text-sm font-semibold  text-white bg-[#E83E48]">
             <ShoppingCartIcon
-              className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+              className="h-6 w-6"
               aria-hidden="true"
             />
-            <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
+            <span className="text-base font-medium ">
               0
             </span>
             <span className="sr-only">items in cart, view bag</span>
-            <ChevronDownIcon
+            {/* <ChevronDownIcon
               className="h-5 w-5 flex-none text-gray-400"
               aria-hidden="true"
-            />
+            /> */}
           </Popover.Button>
 
           <Transition

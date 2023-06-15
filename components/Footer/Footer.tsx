@@ -107,7 +107,7 @@ export default function Footer() {
             />
             <div className="inline-flex items-center gap-2 mt-5">
               <img src="/images/naija.png" alt="" className="rounded-full" />
-              <span className="text-lg">English</span>
+              <span className="text-lg">Nigeria</span>
             </div>
             <br />
             <div className="inline-flex items-center gap-2 mt-5">
