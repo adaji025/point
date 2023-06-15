@@ -13,10 +13,10 @@ const CallToAction = () => {
             app. Get Rewarded for shopping
           </p>
           <div className="mt-5 flex items-center justify-center gap-5">
-            <button className="text-white px-8 py-3 rounded-full bg-black text-sm sm:text-base">
+            <button className="text-white px-8 py-3 rounded-full bg-black text-sm sm:text-base hover:scale-105 duration-500 transition-all">
               App Store
             </button>
-            <button className="text-white px-8 py-3 rounded-full bg-black text-sm sm:text-base">
+            <button className="text-white px-8 py-3 rounded-full bg-black text-sm sm:text-base hover:scale-105 duration-500 transition-all">
               Google Play
             </button>
           </div>
