@@ -1,7 +1,11 @@
 "use client";
 
 import React from "react";
-import {ChevronLeftIcon, ChevronRightIcon, StarIcon} from '@heroicons/react/24/outline'
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  StarIcon,
+} from "@heroicons/react/24/outline";
 import Link from "next/link";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -15,6 +19,7 @@ SwiperCore.use([Navigation]);
 
 type CardProps = {
   item: {
+    slug: string;
     name: string;
     priceStart: number;
     priceEnd: number;
@@ -23,10 +28,14 @@ type CardProps = {
   };
 };
 
-
-const Card = ({item}:CardProps) => {
+const Card = ({ item }: CardProps) => {
   return (
-    <div className="w-full min-h-[300px] rounded-[16px] p-2">
+    <Link
+      href={{
+        pathname: `/games/${item.slug}`,
+      }}
+      className="w-full min-h-[300px] rounded-[16px] p-2 cursor-pointer"
+    >
       <img
         src={item.image}
         alt=""
@@ -44,7 +53,7 @@ const Card = ({item}:CardProps) => {
           <StarIcon className="h-5 w-5" />
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
@@ -54,6 +63,7 @@ const Game = () => {
 
   const games = [
     {
+      slug: "minecraft",
       name: "minecraft",
       priceStart: 5,
       priceEnd: 5000,
@@ -61,6 +71,7 @@ const Game = () => {
       image: "/images/minecraft.png",
     },
     {
+      slug: "steam",
       name: "steam",
       priceStart: 5,
       priceEnd: 5000,
@@ -68,6 +79,7 @@ const Game = () => {
       image: "/images/steam.png",
     },
     {
+      slug: "dead-space",
       name: "dead space",
       priceStart: 5,
       priceEnd: 5000,
@@ -75,6 +87,7 @@ const Game = () => {
       image: "/images/dead-space.png",
     },
     {
+      slug: "fortnite",
       name: "fortnite",
       priceStart: 5,
       priceEnd: 5000,
@@ -82,6 +95,7 @@ const Game = () => {
       image: "/images/fortnite.png",
     },
     {
+      slug: "minecraft",
       name: "minecraft",
       priceStart: 5,
       priceEnd: 5000,
@@ -89,6 +103,7 @@ const Game = () => {
       image: "/images/minecraft.png",
     },
     {
+      slug: "steam",
       name: "steam",
       priceStart: 5,
       priceEnd: 5000,
@@ -96,6 +111,7 @@ const Game = () => {
       image: "/images/steam.png",
     },
     {
+      slug: "dead-space",
       name: "dead space",
       priceStart: 5,
       priceEnd: 5000,
@@ -103,6 +119,7 @@ const Game = () => {
       image: "/images/dead-space.png",
     },
     {
+      slug: "fortnite",
       name: "fortnite",
       priceStart: 5,
       priceEnd: 5000,
@@ -126,16 +143,16 @@ const Game = () => {
           <span className="font-semibold text-xl">See all</span>
           <div className="flex gap-3">
             <div
-              className="h-[42px] w-[42px] rounded-full bg-black/20 flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-105"
+              className="h-[42px] w-[42px] rounded-full bg-[#313633] text-white flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-105"
               ref={navigationPrevRef}
             >
               <ChevronLeftIcon className="h-5 w-5" />
             </div>
             <div
-              className="h-[42px] w-[42px] rounded-full bg-black/20 flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-105"
+              className="h-[42px] w-[42px] rounded-full bg-[#313633] text-white flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-105"
               ref={navigationNextRef}
             >
-              <ChevronLeftIcon className="h-5 w-5" />
+              <ChevronRightIcon className="h-5 w-5" />
             </div>
           </div>
         </div>
@@ -210,7 +227,7 @@ const Game = () => {
         >
           {games.map((item, idx) => (
             <SwiperSlide key={idx}>
-              <Card {...{item}} />
+              <Card {...{ item }} />
             </SwiperSlide>
           ))}
         </Swiper>
