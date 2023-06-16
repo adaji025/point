@@ -1,6 +1,6 @@
 "use client";
 
-import NextNProgress from "nextjs-progressbar";
+
 import NextTopLoader from 'nextjs-toploader';
 import Navbar from "@/components/Navbar/Navbar";
 import { Inter } from "next/font/google";
