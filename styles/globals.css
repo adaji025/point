@@ -28,4 +28,8 @@ p{
   display: none !important;
  }
 
- 
+.call-to-action {
+    background: url(../public/images/call-to-action.png);
+    background-color: #EDC700;
+   
+} 

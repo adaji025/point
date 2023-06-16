@@ -13,20 +13,31 @@ import "swiper/css/pagination";
 
 SwiperCore.use([Navigation]);
 
-const Card = () => {
+type CardProps = {
+  item: {
+    name: string;
+    priceStart: number;
+    priceEnd: number;
+    rating: string;
+    image: string;
+  };
+};
+
+
+const Card = ({item}:CardProps) => {
   return (
-    <div className="w-[280px] sm:max-w-[300px] min-h-[300px]">
+    <div className="w-full min-h-[300px] rounded-[16px] p-2">
       <img
-        src="/images/game.jpg"
+        src={item.image}
         alt=""
-        className="w-full h-[400px] object-cover hover:scale-105 transition-all duration-300"
+        className="w-full h-[400px] object-cover hover:scale-105 transition-all duration-300 rounded-[16px]"
       />
       <div className="flex justify-between">
         <div className="mt-2 grid">
-          <span className=" font-semibold  text-[24px]">Uber</span>
-          <span className="text-lg mt-[-5px] font-medium text-black/60">
-            60 UC - $50
-          </span>
+          <span className="font-bold  text-[22px] capitalize">{item.name}</span>
+          <div className="text-lg mt-[-5px] font-medium text-[#231F20]">
+            {item.priceStart} NGN - {item.priceEnd} NGN
+          </div>
         </div>
         <div className="flex gap-1 items-center">
           <span className="font-bold">4.6</span>
@@ -41,35 +52,98 @@ const Game = () => {
   const navigationPrevRef = React.useRef(null);
   const navigationNextRef = React.useRef(null);
 
+  const games = [
+    {
+      name: "minecraft",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/minecraft.png",
+    },
+    {
+      name: "steam",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/steam.png",
+    },
+    {
+      name: "dead space",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/dead-space.png",
+    },
+    {
+      name: "fortnite",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/fortnite.png",
+    },
+    {
+      name: "minecraft",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/minecraft.png",
+    },
+    {
+      name: "steam",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/steam.png",
+    },
+    {
+      name: "dead space",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/dead-space.png",
+    },
+    {
+      name: "fortnite",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/fortnite.png",
+    },
+  ];
+
   return (
     <div className="mt-20 max-w-[1400px] mx-auto px-4 lg:px-8">
-      <Link href="/top-categories">
-        <h2 className="text-[32px] font-semibold cursor-pointer">
-          Eat, Sleep, Game, Repeat
-        </h2>
-      </Link>
+      <div className="flex flex-col md:flex-row justify-between md:items-center gap-5 mb-5">
+        <div>
+          <Link href="/top-categories">
+            <h2 className="text-[32px] font-extrabold cursor-pointer">
+              Top Products in Nigeria
+            </h2>
+          </Link>
+        </div>
 
-      <div className="flex items-center justify-end gap-3">
-        <span className="font-semibold text-xl">See all</span>
-        <div className="flex gap-3">
-          <div
-            className="h-[42px] w-[42px] rounded-full bg-black/20 flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-105"
-            ref={navigationPrevRef}
-          >
-            <ChevronLeftIcon className="h-5 w-5" />
-          </div>
-          <div
-            className="h-[42px] w-[42px] rounded-full bg-black/20 flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-105"
-            ref={navigationNextRef}
-          >
-            <ChevronRightIcon className="h-5 w-5" />
+        <div className="flex items-center justify-end gap-3">
+          <span className="font-semibold text-xl">See all</span>
+          <div className="flex gap-3">
+            <div
+              className="h-[42px] w-[42px] rounded-full bg-black/20 flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-105"
+              ref={navigationPrevRef}
+            >
+              <ChevronLeftIcon className="h-5 w-5" />
+            </div>
+            <div
+              className="h-[42px] w-[42px] rounded-full bg-black/20 flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-105"
+              ref={navigationNextRef}
+            >
+              <ChevronLeftIcon className="h-5 w-5" />
+            </div>
           </div>
         </div>
       </div>
       <div className="mt-5">
         <Swiper
           slidesPerView={1}
-          spaceBetween={5}
+          spaceBetween={10}
           pagination={{
             clickable: true,
           }}
@@ -97,46 +171,46 @@ const Game = () => {
           breakpoints={{
             360: {
               slidesPerView: 1.1,
-              spaceBetween: 20,
+              // spaceBetween: 20,
             },
             400: {
               slidesPerView: 1.2,
-              spaceBetween: 20,
+              // spaceBetween: 20,
             },
             450: {
               slidesPerView: 1.5,
-              spaceBetween: 20,
+              // spaceBetween: 20,
             },
             500: {
               slidesPerView: 1.7,
-              spaceBetween: 20,
+              // spaceBetween: 20,
             },
             640: {
               slidesPerView: 2.2,
-              spaceBetween: 20,
+              // spaceBetween: 20,
             },
             750: {
               slidesPerView: 2.5,
-              spaceBetween: 20,
+              // spaceBetween: 20,
             },
             800: {
               slidesPerView: 2.7,
-              spaceBetween: 20,
+              // spaceBetween: 20,
             },
             900: {
               slidesPerView: 3.2,
-              spaceBetween: 40,
+              // spaceBetween: 2,
             },
             1240: {
               slidesPerView: 4,
-              spaceBetween: 50,
+              // spaceBetween: 18,
             },
           }}
           className="mySwiper"
         >
-          {[...Array(10)].map((item, idx) => (
+          {games.map((item, idx) => (
             <SwiperSlide key={idx}>
-              <Card />
+              <Card {...{item}} />
             </SwiperSlide>
           ))}
         </Swiper>

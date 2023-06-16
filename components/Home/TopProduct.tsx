@@ -40,9 +40,9 @@ const Card = ({ item }: CardProps) => {
           <span className=" font-bold  text-[22px] capitalize">
             {item.name}
           </span>
-          <span className="text-lg mt-[-5px] font-medium text-[#231F20]">
+          <div className="text-lg mt-[-5px] font-medium text-[#231F20]">
             {item.priceStart} NGN - {item.priceEnd} NGN
-          </span>
+          </div>
         </div>
         <div className="flex gap-1 items-center">
           <span className="font-bold">4.6</span>
@@ -53,27 +53,27 @@ const Card = ({ item }: CardProps) => {
   );
 };
 
-const TopGiftCard = () => {
+const TopProduct = () => {
   const navigationPrevRef = React.useRef(null);
   const navigationNextRef = React.useRef(null);
 
   const topGiftCard = [
     {
-      name: "hulu",
+      name: "DSTV",
       priceStart: 5,
       priceEnd: 5000,
       rating: "4.7",
-      image: "/images/hulu.png",
+      image: "/images/dstv.png",
     },
     {
-      name: "fanatics",
+      name: "spotify",
       priceStart: 5,
       priceEnd: 5000,
       rating: "4.7",
-      image: "/images/fanatics.png",
+      image: "/images/spotify.png",
     },
     {
-      name: "google play",
+      name: "spectranet",
       priceStart: 5,
       priceEnd: 5000,
       rating: "4.7",
@@ -101,33 +101,30 @@ const TopGiftCard = () => {
       image: "/images/fanatics.png",
     },
     {
-      name: "google play",
+      name: "spectranet",
       priceStart: 5,
       priceEnd: 5000,
       rating: "4.7",
-      image: "/images/google-play.png",
+      image: "/images/spectranet.png",
     },
     {
-      name: "MTN",
+      name: "visa",
       priceStart: 5,
       priceEnd: 5000,
       rating: "4.7",
-      image: "/images/mtn.png",
+      image: "/images/visa.png",
     },
   ];
 
   return (
-    <div className="mt-20 max-w-[1400px] mx-auto px-6 md:px-8 lg:px-16">
+    <div className="mt-16 max-w-[1400px] mx-auto px-6 md:px-8 lg:px-16">
       <div className="flex flex-col md:flex-row justify-between md:items-center gap-5 mb-5">
         <div>
           <Link href="/top-categories">
             <h2 className="text-[32px] font-extrabold cursor-pointer">
-              Top gift cards in Nigeria
+              Top Products in Nigeria
             </h2>
           </Link>
-          <div className="text-xl text-[#A6A7AF]">
-            Explore the list of most purchased gift cards in Nigeria
-          </div>
         </div>
 
         <div className="flex items-center justify-end gap-3">
@@ -227,4 +224,4 @@ const TopGiftCard = () => {
   );
 };
 
-export default TopGiftCard;
+export default TopProduct;
