@@ -16,8 +16,6 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [country, setCountry] = React.useState("NG");
 
-  console.log(country);
-
   return (
     <>
       <MobileMenu {...{ isOpen, setIsOpen, setOpen, open }} />

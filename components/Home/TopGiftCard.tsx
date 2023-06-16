@@ -31,7 +31,8 @@ type CardProps = {
 const Card = ({ item }: CardProps) => {
   return (
     <Link href={{
-      pathname: `/top-giftcards/${item.slug}`
+      pathname: `/top-giftcards/${item.slug}`,
+      query: item
     }} className="w-full min-h-[320px] rounded-[10px] p-2">
       <img
         src={item.image}
@@ -145,16 +146,16 @@ const TopGiftCard = () => {
           <span className="font-semibold text-xl">See all</span>
           <div className="flex gap-3">
             <div
-              className="h-[42px] w-[42px] rounded-full bg-black/20 flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-105"
+              className="h-[42px] w-[42px] rounded-full bg-[#313633] text-white flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-105"
               ref={navigationPrevRef}
             >
               <ChevronLeftIcon className="h-5 w-5" />
             </div>
             <div
-              className="h-[42px] w-[42px] rounded-full bg-black/20 flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-105"
+              className="h-[42px] w-[42px] rounded-full bg-[#313633] text-white flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-105"
               ref={navigationNextRef}
             >
-              <ChevronLeftIcon className="h-5 w-5" />
+              <ChevronRightIcon className="h-5 w-5" />
             </div>
           </div>
         </div>
