@@ -44,7 +44,7 @@ export default function Home() {
             }}
           />
         </>
-        <Navbar/>
+       
         <Hero />
         <TopGiftCard />
         <TopProduct />
@@ -53,7 +53,7 @@ export default function Home() {
         <CallToAction />
         <Collection />
         <Faq />
-        <Footer/>
+        
       </main>
     </div>
   );

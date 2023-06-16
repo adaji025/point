@@ -19,6 +19,7 @@ SwiperCore.use([Navigation]);
 
 type CardProps = {
   item: {
+    slug: string
     name: string;
     priceStart: number;
     priceEnd: number;
@@ -29,7 +30,9 @@ type CardProps = {
 
 const Card = ({ item }: CardProps) => {
   return (
-    <div className="w-full min-h-[320px] rounded-[10px] p-2">
+    <Link href={{
+      pathname: `/top-giftcards/${item.slug}`
+    }} className="w-full min-h-[320px] rounded-[10px] p-2">
       <img
         src={item.image}
         alt=""
@@ -49,7 +52,7 @@ const Card = ({ item }: CardProps) => {
           <StarIcon />
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
@@ -59,6 +62,7 @@ const TopGiftCard = () => {
 
   const topGiftCard = [
     {
+      slug: "hulu",
       name: "hulu",
       priceStart: 5,
       priceEnd: 5000,
@@ -66,6 +70,7 @@ const TopGiftCard = () => {
       image: "/images/hulu.png",
     },
     {
+      slug: "fanatics",
       name: "fanatics",
       priceStart: 5,
       priceEnd: 5000,
@@ -73,6 +78,7 @@ const TopGiftCard = () => {
       image: "/images/fanatics.png",
     },
     {
+      slug: "google-play",
       name: "google play",
       priceStart: 5,
       priceEnd: 5000,
@@ -80,6 +86,7 @@ const TopGiftCard = () => {
       image: "/images/google-play.png",
     },
     {
+      slug: "mtn",
       name: "MTN",
       priceStart: 5,
       priceEnd: 5000,
@@ -87,6 +94,7 @@ const TopGiftCard = () => {
       image: "/images/mtn.png",
     },
     {
+      slug: "hulu",
       name: "hulu",
       priceStart: 5,
       priceEnd: 5000,
@@ -94,6 +102,7 @@ const TopGiftCard = () => {
       image: "/images/hulu.png",
     },
     {
+      slug: "fanatics",
       name: "fanatics",
       priceStart: 5,
       priceEnd: 5000,
@@ -101,6 +110,7 @@ const TopGiftCard = () => {
       image: "/images/fanatics.png",
     },
     {
+      slug: "google-play",
       name: "google play",
       priceStart: 5,
       priceEnd: 5000,
@@ -108,6 +118,7 @@ const TopGiftCard = () => {
       image: "/images/google-play.png",
     },
     {
+      slug: "mtn",
       name: "MTN",
       priceStart: 5,
       priceEnd: 5000,
