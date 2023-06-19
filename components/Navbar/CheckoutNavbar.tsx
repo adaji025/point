@@ -3,13 +3,14 @@ import { ChevronLeftIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link';
 import Image from 'next/image';
 import Logo from "../../assets/images/logo/logocolor.png"
+import { useRouter } from 'next/navigation';
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function CheckoutNavbar() {
-
+const router = useRouter()
 
   return (
     <div className="bg-white">
@@ -23,13 +24,14 @@ export default function CheckoutNavbar() {
                 <div className="flex h-16 items-center justify-between">
                   {/* Logo (lg+) */}
                   <div className="hidden lg:flex lg:items-center">
-                    <div className="flex items-center">
-                      <Link href="/recharge" className="block">
+                    <div className="flex items-center" 
+                    onClick={() => router.back}>
+                      <div className="block">
                         <ChevronLeftIcon className="h-6 w-6 font-bold mr-4 hover:bg-[#dadfe0] rounded-full" />
-                      </Link>
-                      <Link href="/recharge" className="block">
+                      </div>
+                      <div className="block">
                         <Image className="w-24" src={Logo} alt="points" />
-                      </Link>
+                      </div>
                     </div>
                   </div>
                   {/* Mobile menu and search (lg-) */}
