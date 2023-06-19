@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { ShoppingBagIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { ShoppingBagIcon, ShoppingCartIcon, StarIcon } from "@heroicons/react/24/outline";
 
 import Link from "next/link";
 import EstimateDropdown from "./EstimateDropdown";
@@ -9,70 +9,49 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-<style jsx>{`
-  @media (max-width: 640px) {
-    .text-me {
-      margin-top: -200px;
-    }
-  }
 
-  @layer utilities {
-    input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-  }
-`}</style>;
 
-const products = [
-  {
-    id: 1,
-    name: "Mtn",
-    href: "/recharge",
-    price: "50 NGN - 50000 NGN",
-    availability: "White and Black",
-    imageSrc:
-      "https://images.africanfinancials.com/63be93ed-ng-mtn-logo-200x200.png",
-    imageAlt:
-      "White fabric pouch with white zipper, black zipper pull, and black elastic loop.",
-  },
-  {
-    id: 2,
-    name: "Airtel",
-    href: "#",
-    price: "50 NGN - 50000 NGN",
-    availability: "Washed Black",
-    imageSrc:
-      "https://www.businesslist.com.ng/img/ng/e/1604481877-59-airtel-nigeria-customer-care.jpg",
-    imageAlt:
-      "Front of tote bag with washed black canvas body, black straps, and tan leather handles and accents.",
-  },
-  {
-    id: 3,
-    name: "Glo",
-    href: "#",
-    price: "50 NGN - 50000 NGN",
-    availability: "Washed Black",
-    imageSrc:
-      "https://netstorage-legit.akamaized.net/images/a3d8cbb3f3a7b1d6.jpg?imwidth=720",
-    imageAlt:
-      "Front of tote bag with washed black canvas body, black straps, and tan leather handles and accents.",
-  },
+type CardProps = {
+  item: {
+    slug: string
+    name: string;
+    priceStart: number;
+    priceEnd: number;
+    rating: string;
+    image: string;
+  };
+};
 
-  {
-    id: 4,
-    name: "9mobile",
-    href: "#",
-    price: "50 NGN - 50000 NGN",
-    availability: "Washed Black",
-    imageSrc:
-      "https://9mobile.com.ng/wp-content/uploads/2023/02/9xtra-all-channels-600x601.png",
-    imageAlt:
-      "Front of tote bag with washed black canvas body, black straps, and tan leather handles and accents.",
-  },
-  // More products...
-];
+const Card = ({ item }: CardProps) => {
+  return (
+    <Link href={{
+      pathname: `/top-giftcards/${item.slug}`,
+      query: item
+    }} className="w-full min-h-[320px] rounded-[10px] p-2">
+      <img
+        src={item.image}
+        alt=""
+        className="w-full h-[200px] hover:scale-105 transition-all duration-300 rounded-[10px]"
+      />
+      <div className="flex justify-between">
+        <div className="mt-2 grid">
+          <span className=" font-bold  text-[22px] capitalize">
+            {item.name}
+          </span>
+          <span className="text-lg mt-[-5px] font-medium text-[#231F20]">
+            {item.priceStart} NGN - {item.priceEnd} NGN
+          </span>
+        </div>
+        <div className="flex gap-1 items-center">
+          <span className="font-bold">4.6</span>
+          <StarIcon />
+        </div>
+      </div>
+    </Link>
+  );
+};
+
+
 
 export default function ProductDetails() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -82,6 +61,73 @@ export default function ProductDetails() {
     // Logic for adding item to cart
     console.log(`Item ${products} added to cart`);
   };
+
+  const products = [
+    {
+      slug: "dstv",
+      name: "DSTV",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/dstv.png",
+    },
+    {
+      slug: "spotify",
+      name: "spotify",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/spotify.png",
+    },
+    {
+      slug: "spectranet",
+      name: "spectranet",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/google-play.png",
+    },
+    {
+      slug: "hulu",
+      name: "MTN",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/mtn.png",
+    },
+    {
+      slug: "hulu",
+      name: "hulu",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/hulu.png",
+    },
+    {
+      slug: "fanatics",
+      name: "fanatics",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/fanatics.png",
+    },
+    {
+      slug: "spectranet",
+      name: "spectranet",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/spectranet.png",
+    },
+    {
+      slug: "",
+      name: "visa",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/visa.png",
+    },
+  ];
 
   return (
     <div className="bg-gray-100 pt-20">
@@ -188,36 +234,14 @@ export default function ProductDetails() {
       </div>
 
       <div>
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+        <div className="mx-auto max-w-[1400px] py-16 px-6 sm:py-24 md:px-8 lg:px-16">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">
             More products on Points
           </h2>
 
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {products.map((product) => (
-              <div key={product.id} className="group relative">
-                <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 ">
-                  <img
-                    src={product.imageSrc}
-                    alt={product.imageAlt}
-                    className="w-full object-cover object-center lg:w-full"
-                  />
-                </div>
-                <div className="mt-4 flex justify-between">
-                  <div>
-                    <h3 className="font-bold text-black">
-                      <Link href={product.href}>
-                        <span aria-hidden="true" className="absolute inset-0" />
-                        {product.name}
-                      </Link>
-                    </h3>
-
-                    <p className="text-sm font-medium text-gray-900">
-                      {product.price}
-                    </p>
-                  </div>
-                </div>
-              </div>
+            {products.map((item, idx) => (
+              <Card key={idx} {...{item}} />
             ))}
           </div>
         </div>

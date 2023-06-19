@@ -4,7 +4,7 @@ const CallToAction = () => {
   return (
     <div className="mt-20 max-w-[1400px] mx-auto px-6 md:px-8 lg:px-16 ">
       <div className="call-to-action rounded-[20px]">
-        <div className="bg-[#EDC700]/50 h-[300px] md:h-[600px] flex flex-col justify-center items-center rounded-[20px]">
+        <div className="h-[300px] md:h-[600px] flex flex-col justify-center items-center rounded-[20px]">
           <h2 className="text-[24px] sm:text-[40px] md:text-[60px]  text-center font-extrabold">
             Download the app
           </h2>

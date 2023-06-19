@@ -129,7 +129,7 @@ const Game = () => {
   ];
 
   return (
-    <div className="mt-20 max-w-[1400px] mx-auto px-4 lg:px-8">
+    <div className="mt-20 max-w-[1400px] mx-auto px-6 md:px-8 lg:px-16">
       <div className="flex flex-col md:flex-row justify-between md:items-center gap-5 mb-5">
         <div>
           <Link href="/top-categories">
@@ -160,7 +160,7 @@ const Game = () => {
       <div className="mt-5">
         <Swiper
           slidesPerView={1}
-          spaceBetween={10}
+          spaceBetween={20}
           pagination={{
             clickable: true,
           }}
@@ -188,39 +188,30 @@ const Game = () => {
           breakpoints={{
             360: {
               slidesPerView: 1.1,
-              // spaceBetween: 20,
             },
             400: {
               slidesPerView: 1.2,
-              // spaceBetween: 20,
             },
             450: {
               slidesPerView: 1.5,
-              // spaceBetween: 20,
             },
             500: {
               slidesPerView: 1.7,
-              // spaceBetween: 20,
             },
             640: {
               slidesPerView: 2.2,
-              // spaceBetween: 20,
             },
             750: {
               slidesPerView: 2.5,
-              // spaceBetween: 20,
             },
             800: {
               slidesPerView: 2.7,
-              // spaceBetween: 20,
             },
             900: {
               slidesPerView: 3.2,
-              // spaceBetween: 2,
             },
             1240: {
               slidesPerView: 4,
-              // spaceBetween: 18,
             },
           }}
           className="mySwiper"
