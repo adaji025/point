@@ -5,33 +5,117 @@ import OnlineStore from "@/components/buy/dropdown/OnlineStore";
 import Rating from "@/components/buy/dropdown/Rating";
 import Reward from "@/components/buy/dropdown/Reward";
 import { ChevronDownIcon, StarIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 import React from "react";
 
-const Card = () => {
+
+type CardProps = {
+  item: {
+    slug: string
+    name: string;
+    priceStart: number;
+    priceEnd: number;
+    rating: string;
+    image: string;
+  };
+};
+
+const Card = ({ item }: CardProps) => {
   return (
-    <div className="w-full  min-h-[300px]">
+    <Link href={{
+      pathname: `/top-giftcards/${item.slug}`,
+      query: item
+    }} className="w-full min-h-[320px] rounded-[10px] p-2">
       <img
-        src="/images/uber.jpg"
+        src={item.image}
         alt=""
-        className="w-full h-[200px] hover:scale-105 transition-all duration-300 shadow-sm"
+        className="w-full h-[200px] hover:scale-105 transition-all duration-300 rounded-[10px]"
       />
       <div className="flex justify-between">
         <div className="mt-2 grid">
-          <span className=" font-semibold  text-[24px]">Uber</span>
-          <span className="text-lg mt-[-5px] font-medium text-black/60">
-            60 UC - $50
+          <span className=" font-bold  text-[22px] capitalize">
+            {item.name}
+          </span>
+          <span className="text-lg mt-[-5px] font-medium text-[#231F20]">
+            {item.priceStart} NGN - {item.priceEnd} NGN
           </span>
         </div>
         <div className="flex gap-1 items-center">
           <span className="font-bold">4.6</span>
-          <StarIcon className="h-5 w-5" />
+          <StarIcon />
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
 const Game = () => {
+  const topGiftCard = [
+    {
+      slug: "hulu",
+      name: "hulu",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/hulu.png",
+    },
+    {
+      slug: "fanatics",
+      name: "fanatics",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/fanatics.png",
+    },
+    {
+      slug: "google-play",
+      name: "google play",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/google-play.png",
+    },
+    {
+      slug: "mtn",
+      name: "MTN",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/mtn.png",
+    },
+    {
+      slug: "hulu",
+      name: "hulu",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/hulu.png",
+    },
+    {
+      slug: "fanatics",
+      name: "fanatics",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/fanatics.png",
+    },
+    {
+      slug: "google-play",
+      name: "google play",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/google-play.png",
+    },
+    {
+      slug: "mtn",
+      name: "MTN",
+      priceStart: 5,
+      priceEnd: 5000,
+      rating: "4.7",
+      image: "/images/mtn.png",
+    },
+  ];
   return (
     <div className="w-full">
       <span className="font-bold text-[24px] sm:text-[52px] block">
@@ -51,8 +135,8 @@ const Game = () => {
         </div>
       </div>
       <div className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-5">
-        {[...Array(11)].map((item, idx) => (
-          <Card />
+        {topGiftCard.map((item, idx) => (
+          <Card {...{item}} key={idx} />
         ))}
       </div>
       <div className="max-w-[500px] mx-auto mt-20">
