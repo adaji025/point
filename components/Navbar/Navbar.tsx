@@ -40,7 +40,7 @@ export default function Navbar() {
 
             <Link href="/">
               <img
-                className="w-16 sm:w-[unset]"
+                className="w-16 md:w-[unset] xl:w-[220px]"
                 src="/svgs/point.svg"
                 alt="points"
               />

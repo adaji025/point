@@ -76,7 +76,7 @@ const GiftCardDropdown = () => {
                         open
                           ? "border-[#114f45] text-[#114f45]"
                           : "border-transparent text-gray-700 hover:text-gray-800",
-                        "relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-bold transition-colors duration-200 ease-out"
+                        "relative z-10 -mb-px flex items-center border-b-2 pt-px text-base font-bold transition-colors duration-200 ease-out"
                       )}
                     >
                       {category.name}
