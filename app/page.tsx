@@ -1,7 +1,5 @@
-import Navbar from "../components/Navbar/Navbar";
-import Footer from "@/components/Footer/Footer";
+
 import Faq from "@/components/Faq/Faq";
-import Script from "next/script";
 import Hero from "@/components/Home/Hero";
 import TopGiftCard from "@/components/Home/TopGiftCard";
 import Game from "@/components/Home/Game";
