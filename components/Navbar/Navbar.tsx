@@ -64,8 +64,24 @@ export default function Navbar() {
               </div>
             </div>
           </div>
+          <div className="hidden md:flex gap-5">
+            <GiftCardDropdown />
 
-          <GiftCardDropdown />
+            <div className="flex h-full justify-center gap-5">
+              <Link
+                href="/"
+                className="flex items-center text-base font-bold text-gray-700 hover:text-gray-800"
+              >
+                Phone Refill
+              </Link>
+              <Link
+                href="/"
+                className="flex items-center text-base font-bold text-gray-700 hover:text-gray-800"
+              >
+                Travel
+              </Link>
+            </div>
+          </div>
 
           <div className="flex items-center gap-3">
             {/* Search */}

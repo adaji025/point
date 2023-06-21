@@ -64,8 +64,8 @@ const GiftCardDropdown = () => {
   return (
     <div className="hidden h-full md:flex">
       {/* Mega menus */}
-      <Popover.Group className="ml-8">
-        <div className="flex h-full justify-center space-x-8">
+      <Popover.Group>
+        <div className="flex h-full justify-center gap-5">
           {navigation.categories.map((category, categoryIdx) => (
             <Popover key={category.name} className="flex">
               {({ open }) => (
@@ -204,15 +204,7 @@ const GiftCardDropdown = () => {
             </Popover>
           ))}
 
-          {navigation.pages.map((page) => (
-            <a
-              key={page.name}
-              href={page.href}
-              className="flex items-center text-sm font-bold text-gray-700 hover:text-gray-800"
-            >
-              {page.name}
-            </a>
-          ))}
+          
         </div>
       </Popover.Group>
     </div>
