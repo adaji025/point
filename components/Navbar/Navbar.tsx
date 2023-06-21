@@ -69,13 +69,13 @@ export default function Navbar() {
 
             <div className="flex h-full justify-center gap-5">
               <Link
-                href="/"
+                href="/top-categories"
                 className="flex items-center text-base font-bold text-gray-700 hover:text-gray-800"
               >
                 Phone Refill
               </Link>
               <Link
-                href="/"
+                href="/top-categories"
                 className="flex items-center text-base font-bold text-gray-700 hover:text-gray-800"
               >
                 Travel
