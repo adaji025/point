@@ -40,7 +40,7 @@ export default function Navbar() {
 
             <Link href="/">
               <img
-                className="w-16 md:w-[unset] xl:w-[220px]"
+                className="w-24 md:w-[unset] xl:w-[220px]"
                 src="/svgs/point.svg"
                 alt="points"
               />
@@ -64,19 +64,19 @@ export default function Navbar() {
               </div>
             </div>
           </div>
-          <div className="hidden md:flex gap-5">
+          <div className="hidden md:flex gap-8">
             <GiftCardDropdown />
 
-            <div className="flex h-full justify-center gap-5">
+            <div className="flex h-full justify-center gap-8">
               <Link
                 href="/top-categories"
-                className="flex items-center text-base font-bold text-gray-700 hover:text-gray-800"
+                className="flex items-center text-base font-semibold text-gray-700 hover:text-gray-800"
               >
                 Phone Refill
               </Link>
               <Link
                 href="/top-categories"
-                className="flex items-center text-base font-bold text-gray-700 hover:text-gray-800"
+                className="flex items-center text-base font-semibold text-gray-700 hover:text-gray-800"
               >
                 Travel
               </Link>
