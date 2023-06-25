@@ -1,7 +1,5 @@
 import React from "react";
 import GiftCard from "@/components/Home/GiftCard";
-import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer/Footer";
 
 export const metadata = {
   title: "Points - Top Catigories",
