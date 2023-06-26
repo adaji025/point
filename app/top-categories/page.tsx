@@ -1,18 +1,35 @@
+"use client"
+
 import React from "react";
-import GiftCard from "@/components/Home/GiftCard";
+import Link from "next/link";
+import { ChevronLeftIcon, ChevronRightIcon, StarIcon } from "@heroicons/react/24/outline";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation } from "swiper";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import PhoneTopup from "@/components/TopCategories/PhoneTopup";
+import UtilityBills from "@/components/TopCategories/UtilityBills";
+
+SwiperCore.use([Navigation]);
 
 export const metadata = {
   title: "Points - Top Catigories",
 };
 
+
+
 const TopCategory = () => {
+  
+
+ 
+
   return (
     <>
-      <div className="flex flex-col min-h-screen overflow-hidden">
-        <main className="grow">
-          <GiftCard />
-        </main>
-      </div>
+      <PhoneTopup />
+      <UtilityBills />
     </>
   );
 };

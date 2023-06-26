@@ -9,13 +9,13 @@ type Props = {
 
 const Layout = ({ children }: Props) => {
   const [active, setActive] = React.useState("Top Products");
-  const [isOpen, setIsOpen] = React.useState(true);
+
   return (
     <div className="flex max-w-[1400px] mx-auto px-4 mt-10">
       <div className="hidden mobile:block mt-3">
         <Sidebar {...{ active, setActive }} />
       </div>
-      <main className="w-full mobile:w-[calc(100vw-250px)] lg:w-[calc(100vw-300px)]">
+      <main className="w-full mobile:w-[calc(100%-250px)] lg:w-[calc(100%-300px)]">
         {children}
       </main>
     </div>
