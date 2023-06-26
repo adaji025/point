@@ -1,5 +1,3 @@
-"use client"
-
 import React from "react";
 import PhoneTopup from "@/components/TopCategories/PhoneTopup";
 import UtilityBills from "@/components/TopCategories/UtilityBills";
