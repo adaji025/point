@@ -38,7 +38,7 @@ const Sidebar: React.FC<Props> = ({activeCat, setActiveCat}) => {
   ];
 
   const handleRouting = (cat: string) => {
-    cat === "Top Products" ? router.push("/") : router.push("/");
+    cat === "Top Products" ? router.push("/top-categories") : router.push("/");
   };
   return (
     <div className="mobile:w-[250px] lg:w-[300px]  min-h-screen grid gap-3 left-0 pl-5 ">
