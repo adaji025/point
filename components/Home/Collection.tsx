@@ -13,7 +13,7 @@ const Card = ({ item }: CardProps) => {
 
   return (
     <Link href={item.link}>
-      <div className="max-w-[400px] h-[300px] xl:h-[450px] relative cursor-pointer hover:scale-105 transition-all duration-300 mx-auto">
+      <div className="relative cursor-pointer hover:scale-105 transition-all duration-300 mx-auto">
         <img src={item.image} className="w-full h-full object-cover rounded-[20px]" alt="" />
         <div className="font-bold text-2xl text-white text-center p-4 absolute top-10 w-full">
           {item.title}
