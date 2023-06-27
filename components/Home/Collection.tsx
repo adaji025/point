@@ -3,7 +3,6 @@ import React from "react";
 
 type CardProps = {
   item: {
-    title: string;
     image: string;
     link: string;
   };
@@ -15,9 +14,7 @@ const Card = ({ item }: CardProps) => {
     <Link href={item.link}>
       <div className="relative cursor-pointer hover:scale-105 transition-all duration-300 mx-auto">
         <img src={item.image} className="w-full h-full object-cover rounded-[20px]" alt="" />
-        <div className="font-bold text-2xl text-white text-center p-4 absolute top-10 w-full">
-          {item.title}
-        </div>
+        
       </div>
     </Link>
   );
