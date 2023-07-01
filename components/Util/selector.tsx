@@ -48,25 +48,25 @@ export default function CountrySelector({
 
   return (
     <div ref={ref}>
-      <div className="mt-1 relative">
+      <div className="mt-3 relative bg-white">
         <button
           type="button"
           className={`${
             disabled ? "" : ""
-          } relative shadow-lg h-[40px] w-[40px] sm:text-black font-bold text-2xl rounded-full  pl-3  py-2 text-left cursor-default focus:outline-none sm:text-sm`}
+          } relative shadow h-[40px] w-full border  sm:text-black font-bold text-2xl rounded-md  pl-3  py-2 text-left cursor-default focus:outline-none sm:text-sm`}
           aria-haspopup="listbox"
           aria-expanded="true"
           aria-labelledby="listbox-label"
           onClick={onToggle}
           disabled={disabled}
         >
-          <span className="truncate flex items-center justify-center">
+          <span className="truncate flex items-center">
             <img
               alt={`${selectedValue.value}`}
               src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${selectedValue.value}.svg`}
               className={"inline mr-2 h-4 rounded-sm"}
             />
-            {/* {selectedValue.title} */}
+            {selectedValue.title}
           </span>
         </button>
 
@@ -77,7 +77,7 @@ export default function CountrySelector({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.1 }}
-              className="absolute -left-10 z-10 mt-2 w-36 text-sm bg-white shadow-lg max-h-80 rounded-md ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+              className="absolute left-0 z-10 mt-2 w-full text-sm bg-white shadow-lg max-h-40 rounded-md ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
               tabIndex={-1}
               role="listbox"
               aria-labelledby="listbox-label"

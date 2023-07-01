@@ -10,15 +10,43 @@ import Link from "next/link";
 import Cart from "./Cart";
 import MobileMenu from "./MobileMenu";
 import GiftCardDropdown from "./GiftCardDropdown";
+import Modal from "../Modal/Modal";
+import SelectLanguage from "../SelectLanguage/SelectLanguage";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const [country, setCountry] = React.useState("NG");
 
   return (
     <>
       <MobileMenu {...{ isOpen, setIsOpen, setOpen, open }} />
+
+      {modalOpen && (
+        <Modal title="Country & Language">
+          <CountrySelector
+            id={"countries"}
+            open={isOpen}
+            onToggle={() => setIsOpen(!isOpen)}
+            onChange={(val) => setCountry(val)}
+            // We use this type assertion because we are always sure this find will return a value but need to let TS know since it could technically return null
+            selectedValue={
+              COUNTRIES.find(
+                (option) => option.value === country
+              ) as SelectMenuOption
+            }
+          />
+          {/* <select className="w-[300px] mt-6 mb-3 shadow h-[40px] sm:text-black font-bold text-2xl rounded-md  pl-3  py-2 text-left cursor-default focus:outline-none sm:text-sm">
+            <option value="">English</option>
+            <option value="">Spanish</option>
+            <option value="">French</option>
+            <option value="">Italian</option>
+            <option value="">Portuguess</option>
+          </select> */}
+          <SelectLanguage />
+        </Modal>
+      )}
 
       <div className="bg-white relative">
         <nav
@@ -95,18 +123,14 @@ export default function Navbar() {
             <div className="w-[40px] h-[40px] rounded-full bg-[#1E1E1E] grid place-items-center">
               <img src="/svgs/head-set.svg" alt="" />
             </div>
-            <div className="hidden lg:block">
-              <CountrySelector
-                id={"countries"}
-                open={isOpen}
-                onToggle={() => setIsOpen(!isOpen)}
-                onChange={(val) => setCountry(val)}
-                // We use this type assertion because we are always sure this find will return a value but need to let TS know since it could technically return null
-                selectedValue={
-                  COUNTRIES.find(
-                    (option) => option.value === country
-                  ) as SelectMenuOption
-                }
+            <div
+              className="hidden lg:block cursor-pointer"
+              onClick={() => setModalOpen(!modalOpen)}
+            >
+              <img
+                alt={`${country}`}
+                src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${country}.svg`}
+                className={"inline h-6 rounded-sm"}
               />
             </div>
           </div>
