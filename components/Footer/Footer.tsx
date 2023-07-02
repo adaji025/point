@@ -1,9 +1,14 @@
 "use client";
-import { JSX, SVGProps } from "react";
-import Image from "next/image";
+
+import React, { JSX, SVGProps } from "react";
 import Link from "next/link";
 import ThemeDropdown from "./ThemeDropdown";
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
+import Modal from "../Modal/Modal";
+import CountrySelector from "../Util/selector";
+import SelectLanguage from "../SelectLanguage/SelectLanguage";
+import { SelectMenuOption } from "../Util/lib/types";
+import { COUNTRIES } from "../Util/lib/countries";
 
 const navigation = {
   solutions: [
@@ -92,121 +97,156 @@ const navigation = {
 };
 
 export default function Footer() {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [modalOpen, setModalOpen] = React.useState(false);
+  const [country, setCountry] = React.useState("NG");
+
+  const countryTitle = COUNTRIES.find(
+    (option) => option.value === country
+  ) as SelectMenuOption;
   return (
-    <footer className="bg-black text-white" aria-labelledby="footer-heading">
-      <h2 id="footer-heading" className="sr-only">
-        Footer
-      </h2>
-      <div className="mx-auto max-w-[1400px] px-6 md:px-8 pb-8 pt-16 sm:pt-24 lg:px-16 lg:pt-16">
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 ">
-          <div>
-            <img
-              className="w-40"
-              src="/svgs/point-white.svg"
-              alt="Company name"
-            />
-            <div className="inline-flex items-center gap-2 mt-5">
-              <img src="/images/naija.png" alt="" className="rounded-full" />
-              <span className="text-lg">Nigeria</span>
+    <>
+      {modalOpen && (
+        <Modal title="Country & Language">
+          <CountrySelector
+            id={"countries"}
+            open={isOpen}
+            onToggle={() => setIsOpen(!isOpen)}
+            onChange={(val) => setCountry(val)}
+            // We use this type assertion because we are always sure this find will return a value but need to let TS know since it could technically return null
+            selectedValue={
+              COUNTRIES.find(
+                (option) => option.value === country
+              ) as SelectMenuOption
+            }
+          />
+          <SelectLanguage />
+        </Modal>
+      )}
+      <footer className="bg-black text-white" aria-labelledby="footer-heading">
+        <h2 id="footer-heading" className="sr-only">
+          Footer
+        </h2>
+        <div className="mx-auto max-w-[1400px] px-6 md:px-8 pb-8 pt-16 sm:pt-24 lg:px-16 lg:pt-16">
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 ">
+            <div>
+              <img
+                className="w-40"
+                src="/svgs/point-white.svg"
+                alt="Company name"
+              />
+              <div
+                className="inline-flex items-center gap-2 mt-5 cursor-pointer"
+                onClick={() => setModalOpen(!modalOpen)}
+              >
+                <img
+                  alt={`${country}`}
+                  src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${country}.svg`}
+                  className={
+                    "inline h-[30px] w-[30px] rounded-full object-cover"
+                  }
+                />
+                <span className="text-lg">{countryTitle.title}</span>
+              </div>
+              <br />
+              <div className="inline-flex items-center gap-2 mt-5">
+                <GlobeAltIcon className="h-5 w-full" />
+                <span className="text-lg">English</span>
+              </div>
             </div>
-            <br />
-            <div className="inline-flex items-center gap-2 mt-5">
-              <GlobeAltIcon className="h-5 w-full" />
-              <span className="text-lg">English</span>
+
+            <div>
+              <h3 className="text-lg font-semibold">Solutions</h3>
+              <ul role="list" className="mt-3 space-y-2">
+                {navigation.solutions.map((item) => (
+                  <li key={item.name}>
+                    <a
+                      href={item.href}
+                      className="text-base  hover:text-gray-300 hover:underline transition-all duration-300"
+                    >
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-10 md:mt-0">
+              <h3 className="text-lg font-extrabold">Support</h3>
+              <ul role="list" className="mt-3 space-y-2">
+                {navigation.support.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
+                      className="text-base hover:text-gray-300 hover:underline transition-all duration-300"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-extrabold">Company</h3>
+              <ul role="list" className="mt-3 space-y-2">
+                {navigation.company.map((item) => (
+                  <li key={item.name}>
+                    <a
+                      href={item.href}
+                      className="text-base  hover:text-gray-300 hover:underline transition-all duration-300"
+                    >
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="">
+              <h3 className="text-lg font-extrabold">Legal</h3>
+              <ul role="list" className="mt-3 space-y-2">
+                {navigation.legal.map((item) => (
+                  <li key={item.name}>
+                    <a
+                      href={item.href}
+                      className="text-base  hover:text-gray-300 hover:underline transition-all duration-300"
+                    >
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-
-          <div>
-            <h3 className="text-lg font-semibold">Solutions</h3>
-            <ul role="list" className="mt-3 space-y-2">
-              {navigation.solutions.map((item) => (
-                <li key={item.name}>
+          <div className="mt-8 border-t border-gray-900/10 pt-8 lg:pb-20 flex flex-col lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-col sm:flex-row justify-between gap-6 lg:order-2">
+              <div className="flex items-center gap-2">
+                <h2>Theme</h2>
+                <ThemeDropdown />
+              </div>
+              <div className="flex gap-6 items-center">
+                {navigation.social.map((item) => (
                   <a
+                    key={item.name}
                     href={item.href}
-                    className="text-base  hover:text-gray-300 hover:underline transition-all duration-300"
+                    className="hover:text-gray-500"
                   >
-                    {item.name}
+                    <span className="sr-only">{item.name}</span>
+                    <item.icon className="h-6 w-6" aria-hidden="true" />
                   </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+                ))}
+              </div>
+            </div>
 
-          <div className="mt-10 md:mt-0">
-            <h3 className="text-lg font-extrabold">Support</h3>
-            <ul role="list" className="mt-3 space-y-2">
-              {navigation.support.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-base hover:text-gray-300 hover:underline transition-all duration-300"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-extrabold">Company</h3>
-            <ul role="list" className="mt-3 space-y-2">
-              {navigation.company.map((item) => (
-                <li key={item.name}>
-                  <a
-                    href={item.href}
-                    className="text-base  hover:text-gray-300 hover:underline transition-all duration-300"
-                  >
-                    {item.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="">
-            <h3 className="text-lg font-extrabold">Legal</h3>
-            <ul role="list" className="mt-3 space-y-2">
-              {navigation.legal.map((item) => (
-                <li key={item.name}>
-                  <a
-                    href={item.href}
-                    className="text-base  hover:text-gray-300 hover:underline transition-all duration-300"
-                  >
-                    {item.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <p className="mt-8 text-sm  lg:order-1 lg:mt-0 flex flex-wrap items-center gap-3">
+              &copy; Copyright 2023 .
+              <span className="cursor-pointer">Terms and Conditions</span>
+              <span className="cursor-pointer">Privacy Policy</span>
+            </p>
           </div>
         </div>
-        <div className="mt-8 border-t border-gray-900/10 pt-8 lg:pb-20 flex flex-col lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-col sm:flex-row justify-between gap-6 lg:order-2">
-            <div className="flex items-center gap-2">
-              <h2>Theme</h2>
-              <ThemeDropdown />
-            </div>
-            <div className="flex gap-6 items-center">
-              {navigation.social.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="hover:text-gray-500"
-                >
-                  <span className="sr-only">{item.name}</span>
-                  <item.icon className="h-6 w-6" aria-hidden="true" />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <p className="mt-8 text-sm  lg:order-1 lg:mt-0 flex flex-wrap items-center gap-3">
-            &copy; Copyright 2023 .
-            <span className="cursor-pointer">Terms and Conditions</span>
-            <span className="cursor-pointer">Privacy Policy</span>
-          </p>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 }

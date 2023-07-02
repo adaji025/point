@@ -18,6 +18,9 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [country, setCountry] = React.useState("NG");
+  const [nameOfCountry, setNameOfCountry] = React.useState("Nigeria")
+
+  console.log(country)
 
   return (
     <>
@@ -26,7 +29,7 @@ export default function Navbar() {
       {modalOpen && (
         <Modal title="Country & Language">
           <CountrySelector
-            id={"countries"}
+            id={"countries"}        
             open={isOpen}
             onToggle={() => setIsOpen(!isOpen)}
             onChange={(val) => setCountry(val)}
@@ -37,13 +40,6 @@ export default function Navbar() {
               ) as SelectMenuOption
             }
           />
-          {/* <select className="w-[300px] mt-6 mb-3 shadow h-[40px] sm:text-black font-bold text-2xl rounded-md  pl-3  py-2 text-left cursor-default focus:outline-none sm:text-sm">
-            <option value="">English</option>
-            <option value="">Spanish</option>
-            <option value="">French</option>
-            <option value="">Italian</option>
-            <option value="">Portuguess</option>
-          </select> */}
           <SelectLanguage />
         </Modal>
       )}
@@ -130,7 +126,7 @@ export default function Navbar() {
               <img
                 alt={`${country}`}
                 src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${country}.svg`}
-                className={"inline h-6 rounded-sm"}
+                className={"inline h-[40px] w-[40px] rounded-full object-cover border"}
               />
             </div>
           </div>

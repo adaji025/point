@@ -22,6 +22,8 @@ export default function CountrySelector({
 }: CountrySelectorProps) {
   const ref = useRef<HTMLDivElement>(null);
 
+  console.log(selectedValue);
+
   useEffect(() => {
     const mutableRef = ref as MutableRefObject<HTMLDivElement | null>;
 
@@ -43,8 +45,6 @@ export default function CountrySelector({
   }, [ref]);
 
   const [query, setQuery] = useState("");
-
-
 
   return (
     <div ref={ref}>
