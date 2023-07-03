@@ -18,9 +18,6 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [country, setCountry] = React.useState("NG");
-  const [nameOfCountry, setNameOfCountry] = React.useState("Nigeria")
-
-  console.log(country)
 
   return (
     <>
