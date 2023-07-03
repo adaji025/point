@@ -25,6 +25,7 @@ export default function Navbar() {
 
       {modalOpen && (
         <Modal title="Country & Language">
+          
           <CountrySelector
             id={"countries"}        
             open={isOpen}

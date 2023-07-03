@@ -4,11 +4,12 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 export default function SelectLanguage() {
   return (
-    <div className="w-full mt-6 mb-3">
+    <div className="w-full mt-4 mb-3">
+      <label htmlFor="lang" className="block text-xs mb-2 font-semibold">Language</label>
       <Menu as="div" className="relative text-left">
         <div>
           <Menu.Button className="flex w-full shadow justify-between items-center font-bold rounded-md bg-white px-4 h-[40px] text-sm  focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-            Options
+            English
             <ChevronDownIcon
               className="ml-2 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100"
               aria-hidden="true"

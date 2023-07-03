@@ -2,6 +2,7 @@ import { COUNTRIES } from "../Util/lib/countries";
 import { SelectMenuOption } from "../Util/lib//types";
 import { AnimatePresence, motion } from "framer-motion";
 import React, { MutableRefObject, useEffect, useRef, useState } from "react";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export interface CountrySelectorProps {
   id: string;
@@ -21,7 +22,6 @@ export default function CountrySelector({
   selectedValue,
 }: CountrySelectorProps) {
   const ref = useRef<HTMLDivElement>(null);
-
 
   useEffect(() => {
     const mutableRef = ref as MutableRefObject<HTMLDivElement | null>;
@@ -46,13 +46,16 @@ export default function CountrySelector({
   const [query, setQuery] = useState("");
 
   return (
-    <div ref={ref}>
-      <div className="mt-3 relative bg-white">
+    <div ref={ref} className="mt-5">
+      <label htmlFor="lang" className="block text-xs font-semibold mb-2">
+        Country
+      </label>
+      <div className="relative bg-white">
         <button
           type="button"
           className={`${
             disabled ? "" : ""
-          } relative shadow h-[40px] w-full border  sm:text-black font-bold text-2xl rounded-md  pl-3  py-2 text-left cursor-default focus:outline-none sm:text-sm`}
+          } relative shadow h-[40px] w-full border  flex items-center justify-between  sm:text-black font-bold text-2xl rounded-md  pl-3  py-2 text-left cursor-default focus:outline-none sm:text-sm`}
           aria-haspopup="listbox"
           aria-expanded="true"
           aria-labelledby="listbox-label"
@@ -67,6 +70,10 @@ export default function CountrySelector({
             />
             {selectedValue.title}
           </span>
+          <ChevronDownIcon
+            className="ml-2 mr-3 h-4 w-4 text-violet-200 hover:text-violet-100"
+            aria-hidden="true"
+          />
         </button>
 
         <AnimatePresence>
