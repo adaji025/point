@@ -26,7 +26,7 @@ const Modal = ({ children, title }: Props) => {
     <>
       {modal && (
         <div className={`z-[999] ${styles.modal}`}>
-          <div onClick={toggleModal} className={styles.overlay} />
+          <div onClick={toggleModal} className={`bg-black/80 ${styles.overlay}`} />
           <div className={styles.modal_content}>
             <h2 className="font-bold">{title}</h2>
             <div>{children}</div>

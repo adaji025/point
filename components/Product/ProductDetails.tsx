@@ -8,7 +8,7 @@ import {
 
 import Link from "next/link";
 import EstimateDropdown from "./EstimateDropdown";
-import Cart from "../Navbar/Cart";
+import Cart from "../Checkout/Cart";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -66,6 +66,14 @@ export default function ProductDetails() {
     // Logic for adding item to cart
     console.log(`Item ${products} added to cart`);
   };
+
+  const goToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
+};
+
 
   const products = [
     {
@@ -136,7 +144,7 @@ export default function ProductDetails() {
 
   return (
     <>
-      {cartModal && <Cart />}
+      {cartModal && <Cart {...{cartModal, setCartModal}} />}
       <div className="bg-gray-100 pt-20">
         <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
           <div className="rounded-lg md:w-2/3 sticky top-0">
@@ -215,7 +223,10 @@ export default function ProductDetails() {
                 <button
                   type="submit"
                   className="text-sm flex w-full flex-1 items-center justify-center rounded-full border border-transparent bg-[#114f45] px-8 py-3 font-medium text-white hover:bg-[#F1F1F1] hover:text-[#114f45] hover:border-[#114f45] focus:outline-none focus:ring-2 focus:ring-[#114f45] focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full sm:mr-4 transition-all duration-300"
-                onClick={() => setCartModal(!cartModal)}
+                  onClick={() => {
+                    goToTop()
+                    setCartModal(!cartModal)
+                  }}
                 >
                   <ShoppingCartIcon
                     className="-ml-0.5 h-5 w-5"

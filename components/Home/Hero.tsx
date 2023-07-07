@@ -20,12 +20,12 @@ const Hero = () => {
           <div className="mt-5 flex gap-5 items-center">
             <button className="border flex items-center justify-center gap-2 w-[150px] py-2 px-3 rounded-full hover:scale-105 transition-all duration-200"
             onClick={() => router.push("/top-categories")}>
-              <span className="whitespace-nowrap text-sm">Gift Cards </span>
+              <span className="whitespace-nowrap text-sm">Phone Refill</span>
               <ArrowLongRightIcon className="h-5 w-5" />
             </button>
             <button className="border flex items-center justify-center gap-2 w-[150px] py-2 px-3 rounded-full hover:scale-105 transition-all duration-200"
             onClick={() => router.push("/top-categories")}>
-              <span className="whitespace-nowrap text-sm">Phone Refill </span>
+              <span className="whitespace-nowrap text-sm">Gift Cards</span>
               <ArrowLongRightIcon className="h-5 w-5" />
             </button>
           </div>

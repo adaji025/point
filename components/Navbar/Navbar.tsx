@@ -25,9 +25,8 @@ export default function Navbar() {
 
       {modalOpen && (
         <Modal title="Country & Language">
-          
           <CountrySelector
-            id={"countries"}        
+            id={"countries"}
             open={isOpen}
             onToggle={() => setIsOpen(!isOpen)}
             onChange={(val) => setCountry(val)}
@@ -87,8 +86,6 @@ export default function Navbar() {
             </div>
           </div>
           <div className="hidden md:flex gap-8">
-            <GiftCardDropdown />
-
             <div className="flex h-full justify-center gap-8">
               <Link
                 href="/top-categories"
@@ -96,6 +93,7 @@ export default function Navbar() {
               >
                 Phone Refill
               </Link>
+              <GiftCardDropdown />
               <Link
                 href="/top-categories"
                 className="flex items-center text-base font-semibold text-gray-700 hover:text-gray-800"
@@ -124,7 +122,9 @@ export default function Navbar() {
               <img
                 alt={`${country}`}
                 src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${country}.svg`}
-                className={"inline h-[40px] w-[40px] rounded-full object-cover border"}
+                className={
+                  "inline h-[40px] w-[40px] rounded-full object-cover border"
+                }
               />
             </div>
           </div>
