@@ -9,6 +9,7 @@ import {
 import Link from "next/link";
 import EstimateDropdown from "./EstimateDropdown";
 import Cart from "../Checkout/Cart";
+import { useData } from "@/context/DataContext";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -61,6 +62,7 @@ export default function ProductDetails() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [cartModal, setCartModal] = useState(false);
+  const { addToCart } = useData();
 
   const handleAddToCart = () => {
     // Logic for adding item to cart

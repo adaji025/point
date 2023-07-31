@@ -1,0 +1,66 @@
+{"products" : [
+    {
+        "slug": "hulu",
+        "name": "hulu",
+        "priceStart": 5,
+        "priceEnd": 5000,
+        "rating": 4.7,
+        "image": "/images/hulu.png"
+      },
+      {
+        "slug": "fanatics",
+        "name": "fanatics",
+        "priceStart": 5,
+        "priceEnd": 5000,
+        "rating": 4.7,
+        "image": "/images/fanatics.png"
+      },
+      {
+        "slug": "google-play",
+        "name": "google play",
+        "priceStart": 5,
+        "priceEnd": 5000,
+        "rating": 4.7,
+        "image": "/images/google-play.png"
+      },
+      {
+        "slug": "mtn",
+        "name": "MTN",
+        "priceStart": 5,
+        "priceEnd": 5000,
+        "rating": 4.7,
+        "image": "/images/mtn.png"
+      },
+      {
+        "slug": "hulu",
+        "name": "hulu",
+        "priceStart": 5,
+        "priceEnd": 5000,
+        "rating": 4.7,
+        "image": "/images/hulu.png"
+      },
+      {
+        "slug": "fanatics",
+        "name": "fanatics",
+        "priceStart": 5,
+        "priceEnd": 5000,
+        "rating": 4.7,
+        "image": "/images/fanatics.png"
+      },
+      {
+        "slug": "google-play",
+        "name": "google play",
+        "priceStart": 5,
+        "priceEnd": 5000,
+        "rating": 4.7,
+        "image": "/images/google-play.png"
+      },
+      {
+        "slug": "mtn",
+        "name": "MTN",
+        "priceStart": 5,
+        "priceEnd": 5000,
+        "rating": 4.7,
+        "image": "/images/mtn.png"
+      }
+]}

@@ -3,6 +3,7 @@ import "../styles/globals.css";
 import { Inter } from "next/font/google";
 import Footer from "@/components/Footer/Footer";
 import NextTopLoader from "nextjs-toploader";
+import DataProvider from "@/context/DataContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,9 +24,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`bg-black/5 ${inter.className}`}>
         <NextTopLoader color="#2A7671" />
-        <Navbar />
-        {children}
-        <Footer />
+        <DataProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </DataProvider>
       </body>
     </html>
   );
