@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -19,7 +20,7 @@ SwiperCore.use([Navigation]);
 
 type CardProps = {
   item: {
-    slug: string
+    slug: string;
     name: string;
     priceStart: number;
     priceEnd: number;
@@ -29,11 +30,18 @@ type CardProps = {
 };
 
 const Card = ({ item }: CardProps) => {
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
+
+  useEffect(() => setMounted(true));
   return (
-    <Link href={{
-      pathname: `/top-giftcards/${item.slug}`,
-      query: item
-    }} className="w-full min-h-[320px] rounded-[10px] p-2">
+    <Link
+      href={{
+        pathname: `/top-giftcards/${item.slug}`,
+        query: item,
+      }}
+      className="w-full min-h-[320px] rounded-[10px] p-2"
+    >
       <img
         src={item.image}
         alt=""
@@ -44,7 +52,13 @@ const Card = ({ item }: CardProps) => {
           <span className=" font-bold  text-[22px] capitalize">
             {item.name}
           </span>
-          <span className="text-lg mt-[-5px] font-medium text-[#231F20]">
+          <span
+            className={`text-lg mt-[-5px] font-medium  ${
+              mounted && resolvedTheme === "dark"
+                ? "text-light-theme"
+                : "text-dark-theme"
+            }`}
+          >
             {item.priceStart} NGN - {item.priceEnd} NGN
           </span>
         </div>

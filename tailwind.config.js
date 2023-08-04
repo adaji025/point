@@ -11,6 +11,8 @@ module.exports = {
         primary: "#002b28",
         grey: "#ecefed",
         red: "#ea0b2c",
+        "light-theme": "#A6A7AF",
+        "dark-theme": "#231F20",
       },
       screens: {
         mobile: "900px",

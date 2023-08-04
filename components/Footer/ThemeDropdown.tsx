@@ -1,8 +1,18 @@
+"use client"
+
+import { useTheme } from "next-themes";
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment,} from "react";
+import { Fragment, useState, useEffect} from "react";
 
 
 export default function ThemeDropdown() {
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
+
+  useEffect(() => setMounted(true));
+
+  console.log("resolvedTheme ==>", resolvedTheme);
+
   return (
     <div className="text-right">
       <Menu
@@ -11,7 +21,7 @@ export default function ThemeDropdown() {
       >
         <div>
           <Menu.Button className="inline-flex gap-2 items-center justify-between rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-            Light
+            {mounted && resolvedTheme}
             <Chevron />
           </Menu.Button>
         </div>
@@ -31,7 +41,8 @@ export default function ThemeDropdown() {
                   <button
                     className={`${
                       active ? "bg-[#2A7671] text-white" : "text-gray-100"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    onClick={() => setTheme("dark")}
                   >
                     Dark
                   </button>
@@ -42,7 +53,8 @@ export default function ThemeDropdown() {
                   <button
                     className={`${
                       active ? "bg-[#2A7671] text-white" : "text-gray-100"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                      onClick={() => setTheme("light")}
                   >
                     Light
                   </button>

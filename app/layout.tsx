@@ -1,9 +1,13 @@
+"use client";
+import {useState, useEffect} from "react"
+import NextTopLoader from "nextjs-toploader";
+import { ThemeProvider, useTheme } from "next-themes";
+import DataProvider from "@/context/DataContext";
 import Navbar from "@/components/Navbar/Navbar";
-import "../styles/globals.css";
 import { Inter } from "next/font/google";
 import Footer from "@/components/Footer/Footer";
-import NextTopLoader from "nextjs-toploader";
-import DataProvider from "@/context/DataContext";
+
+import "../styles/globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,15 +24,25 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
+
+  useEffect(() => setMounted(true));
   return (
     <html lang="en">
-      <body className={`bg-black/5 ${inter.className}`}>
+      <body
+        className={`${mounted && resolvedTheme === "light" ? "bg-white" : "bg-red-500"} ${
+          inter.className
+        }`}
+      >
         <NextTopLoader color="#2A7671" />
-        <DataProvider>
-          <Navbar />
-          {children}
-          <Footer />
-        </DataProvider>
+        <ThemeProvider attribute="class">
+          <DataProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </DataProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
