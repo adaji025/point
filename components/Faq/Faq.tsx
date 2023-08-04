@@ -1,16 +1,18 @@
 "use client";
+
+import { useState, useEffect } from "react";
 import { Disclosure } from "@headlessui/react";
 import { MinusSmallIcon, PlusSmallIcon } from "@heroicons/react/24/outline";
+import { useTheme } from "next-themes";
 
 const faqs = [
   {
     question: "What is POINTS?",
-    answer:
-      `POINTS is a leading crypto e-commerce store that allows users to Shop,
+    answer: `POINTS is a leading crypto e-commerce store that allows users to Shop,
       Pay with Crypto and get rewarded for shopping by purchasing digital gift
       cards and phone refills with Bitcoin or crypto. We also offer bill payment in
       specific countries and plan to expand this service to more countries in the 
-      future.`
+      future.`,
   },
 
   {
@@ -22,12 +24,23 @@ const faqs = [
 ];
 
 export default function Faq() {
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
+
+  useEffect(() => setMounted(true));
+
   return (
     <div className="">
       <div className="mx-auto max-w-[1400px]  py-24 sm:py-32  lg:py-40 px-6 md:px-8 lg:px-16">
         <div className="flex flex-col lg:flex-row gap-10">
           <div className="w-full lg:w-[40%]">
-            <h2 className="text-[24px] md:text-[36px] font-bold text-gray-900">
+            <h2
+              className={`text-[24px] md:text-[36px] font-bold ${
+                mounted && resolvedTheme === "dark"
+                  ? "text-white"
+                  : "text-gray-900"
+              }`}
+            >
               Frequently asked questions
             </h2>
           </div>
@@ -38,7 +51,14 @@ export default function Faq() {
                   {({ open }) => (
                     <>
                       <dt>
-                        <Disclosure.Button className="flex w-full items-start justify-between text-left text-gray-900">
+                        <Disclosure.Button
+                          className={`flex w-full items-start justify-between text-left text-gray-900 
+                         ${
+                           mounted && resolvedTheme === "dark"
+                             ? "text-white"
+                             : "text-gray-900"
+                         }`}
+                        >
                           <span className="text-base font-semibold leading-7">
                             {faq.question}
                           </span>
@@ -58,9 +78,7 @@ export default function Faq() {
                         </Disclosure.Button>
                       </dt>
                       <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                        <p className="text-base text-[#A6A7AF]">
-                          {faq.answer}
-                        </p>
+                        <p className="text-base text-[#A6A7AF]">{faq.answer}</p>
                       </Disclosure.Panel>
                     </>
                   )}

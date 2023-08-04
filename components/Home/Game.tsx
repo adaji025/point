@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -14,6 +14,7 @@ import SwiperCore, { Navigation } from "swiper";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import { useTheme } from "next-themes";
 
 SwiperCore.use([Navigation]);
 
@@ -29,6 +30,10 @@ type CardProps = {
 };
 
 const Card = ({ item }: CardProps) => {
+  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme } = useTheme()
+  
+  useEffect(() => setMounted(true)) 
   return (
     <Link
       href={{
@@ -44,7 +49,13 @@ const Card = ({ item }: CardProps) => {
       <div className="flex justify-between">
         <div className="mt-2 grid">
           <span className="font-bold  text-[22px] capitalize">{item.name}</span>
-          <div className="text-lg mt-[-5px] font-medium text-[#231F20]">
+          <div
+            className={`text-lg mt-[-5px] font-medium  ${
+              mounted && resolvedTheme === "dark"
+                ? "text-light-theme"
+                : "text-dark-theme"
+            }`}
+          >
             {item.priceStart} NGN - {item.priceEnd} NGN
           </div>
         </div>

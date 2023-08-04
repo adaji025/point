@@ -1,5 +1,3 @@
-"use client";
-
 import React, { JSX, SVGProps } from "react";
 import Link from "next/link";
 import ThemeDropdown from "./ThemeDropdown";
@@ -9,6 +7,7 @@ import CountrySelector from "../Util/selector";
 import SelectLanguage from "../SelectLanguage/SelectLanguage";
 import { SelectMenuOption } from "../Util/lib/types";
 import { COUNTRIES } from "../Util/lib/countries";
+
 
 const navigation = {
   solutions: [
@@ -97,6 +96,7 @@ const navigation = {
 };
 
 export default function Footer() {
+
   const [isOpen, setIsOpen] = React.useState(false);
   const [modalOpen, setModalOpen] = React.useState(false);
   const [country, setCountry] = React.useState("NG");
@@ -223,7 +223,7 @@ export default function Footer() {
             <div className="flex flex-col sm:flex-row justify-between gap-6 lg:order-2">
               <div className="flex items-center gap-2">
                 <h2>Theme</h2>
-                <ThemeDropdown />
+                <ThemeDropdown {...{}} />
               </div>
               <div className="flex gap-6 items-center">
                 {navigation.social.map((item) => (
