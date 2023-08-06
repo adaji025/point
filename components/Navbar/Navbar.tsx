@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 import CountrySelector from "../Util/selector";
@@ -12,12 +12,17 @@ import MobileMenu from "./MobileMenu";
 import GiftCardDropdown from "./GiftCardDropdown";
 import Modal from "../Modal/Modal";
 import SelectLanguage from "../SelectLanguage/SelectLanguage";
+import { useTheme } from "next-themes";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [country, setCountry] = React.useState("NG");
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
+
+  useEffect(() => setMounted(true));
 
   return (
     <>
@@ -41,7 +46,11 @@ export default function Navbar() {
         </Modal>
       )}
 
-      <div className="bg-white relative">
+      <div
+        className={` relative ${
+          mounted && resolvedTheme === "dark" ? "bg-black" : "bg-white"
+        }`}
+      >
         <nav
           className="mx-auto max-w-[1400px] h-[100px] flex justify-between px-4 md:px-8 lg:px-16"
           aria-label="Top"
@@ -89,14 +98,18 @@ export default function Navbar() {
             <div className="flex h-full justify-center gap-8">
               <Link
                 href="/top-categories"
-                className="flex items-center text-base font-semibold text-gray-700 hover:text-gray-800"
+                className={`flex items-center text-base font-semibold  ${
+                  mounted && resolvedTheme === "dark" ? "" : "text-gray-700 hover:text-gray-800"
+                }`}
               >
                 Phone Refill
               </Link>
               <GiftCardDropdown />
               <Link
                 href="/top-categories"
-                className="flex items-center text-base font-semibold text-gray-700 hover:text-gray-800"
+                className={`flex items-center text-base font-semibold  ${
+                  mounted && resolvedTheme === "dark" ? "" : "text-gray-700 hover:text-gray-800"
+                }`}
               >
                 Travel
               </Link>
