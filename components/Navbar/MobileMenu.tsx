@@ -1,9 +1,10 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import CountrySelector from "../Util/selector";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { COUNTRIES } from "../Util/lib/countries";
 import { SelectMenuOption } from "../Util/lib/types";
+import { useTheme } from "next-themes";
 
 type Props = {
   isOpen: boolean;
@@ -73,6 +74,10 @@ function classNames(...classes: string[]) {
 
 const MobileMenu = ({ isOpen, setOpen, setIsOpen, open }: Props) => {
   const [country, setCountry] = React.useState("NG");
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
+
+  useEffect(() => setMounted(true));
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
@@ -98,7 +103,11 @@ const MobileMenu = ({ isOpen, setOpen, setIsOpen, open }: Props) => {
             leaveFrom="translate-x-0"
             leaveTo="-translate-x-full"
           >
-            <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
+            <Dialog.Panel
+              className={`relative flex w-full max-w-xs flex-col overflow-y-auto pb-12 shadow-xl ${
+                mounted && resolvedTheme === "dark" ? "bg-black" : "bg-white"
+              }`}
+            >
               <div className="flex px-4 pb-2 pt-5">
                 <button
                   type="button"
@@ -121,7 +130,7 @@ const MobileMenu = ({ isOpen, setOpen, setIsOpen, open }: Props) => {
                           classNames(
                             selected
                               ? "border-indigo-600 text-indigo-600"
-                              : "border-transparent text-gray-900",
+                              : "border-transparent text-gray-500",
                             "flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium"
                           )
                         }
@@ -142,7 +151,11 @@ const MobileMenu = ({ isOpen, setOpen, setIsOpen, open }: Props) => {
                           <div>
                             <p
                               id={`mobile-featured-heading-${categoryIdx}`}
-                              className="font-medium text-gray-900"
+                              className={`flex items-center text-base font-semibold  ${
+                                mounted && resolvedTheme === "dark"
+                                  ? ""
+                                  : "text-gray-700 hover:text-gray-800"
+                              }`}
                             >
                               Featured
                             </p>
@@ -163,7 +176,9 @@ const MobileMenu = ({ isOpen, setOpen, setIsOpen, open }: Props) => {
                           <div>
                             <p
                               id="mobile-categories-heading"
-                              className="font-medium text-gray-900"
+                              className={`flex items-center text-base font-semibold  ${
+                                mounted && resolvedTheme === "dark" ? "" : "text-gray-700 hover:text-gray-800"
+                              }`}
                             >
                               Categories
                             </p>
@@ -186,7 +201,9 @@ const MobileMenu = ({ isOpen, setOpen, setIsOpen, open }: Props) => {
                           <div>
                             <p
                               id="mobile-collection-heading"
-                              className="font-medium text-gray-900"
+                              className={`flex items-center text-base font-semibold  ${
+                                mounted && resolvedTheme === "dark" ? "" : "text-gray-700 hover:text-gray-800"
+                              }`}
                             >
                               Collection
                             </p>
@@ -208,7 +225,9 @@ const MobileMenu = ({ isOpen, setOpen, setIsOpen, open }: Props) => {
                           <div>
                             <p
                               id="mobile-brand-heading"
-                              className="font-medium text-gray-900"
+                              className={`flex items-center text-base font-semibold  ${
+                                mounted && resolvedTheme === "dark" ? "" : "text-gray-700 hover:text-gray-800"
+                              }`}
                             >
                               Brands
                             </p>
@@ -238,7 +257,7 @@ const MobileMenu = ({ isOpen, setOpen, setIsOpen, open }: Props) => {
                   <div key={page.name} className="flow-root">
                     <a
                       href={page.href}
-                      className="-m-2 block p-2 font-bold text-gray-900"
+                      className="-m-2 block p-2 font-bold text-gray-500"
                     >
                       {page.name}
                     </a>

@@ -113,10 +113,10 @@ const {resolvedTheme} = useTheme()
   return (
     <>
       {cartModal && <Cart {...{cartModal, setCartModal}} />}
-      <div className={`pt-20 ${mounted && resolvedTheme === "dark" ? "" : "bg-gray-100"}`}>
+      <div className={`pt-20 ${mounted && resolvedTheme === "dark" ? "bg-black" : "bg-gray-100"}`}>
         <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
           <div className="rounded-lg md:w-2/3 sticky top-0">
-            <div className="justify-center items-center h-full mb-6 rounded-lg bg-white p-6 shadow-md flex ">
+            <div className={`justify-center items-center h-full mb-6 rounded-lg p-6 shadow-md flex ${mounted && resolvedTheme === "dark" ? "bg-black/50" : "bg-white"}`}>
               <img
                 src="https://images.africanfinancials.com/63be93ed-ng-mtn-logo-200x200.png"
                 alt="product-image"
@@ -140,7 +140,7 @@ const {resolvedTheme} = useTheme()
               <div className="w-2/3">
                 <label
                   htmlFor="email"
-                  className="block font-bold leading-6 text-gray-900"
+                  className="block font-bold leading-6 text-gray-500"
                 >
                   Enter amount
                 </label>
@@ -157,7 +157,7 @@ const {resolvedTheme} = useTheme()
               <div className="w-1/3">
                 <label
                   htmlFor="location"
-                  className="block sm:text-sm md:text-xs lg:text-sm mb-3 font-medium leading-6 text-gray-900"
+                  className="block sm:text-sm md:text-xs lg:text-sm mb-3 font-bold leading-6 text-gray-500"
                 >
                   Estimated Price
                 </label>
@@ -168,7 +168,7 @@ const {resolvedTheme} = useTheme()
               <div className="w-full ">
                 <label
                   htmlFor="number"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-bold leading-6 text-gray-500"
                 >
                   Enter your phone number
                 </label>
@@ -190,7 +190,7 @@ const {resolvedTheme} = useTheme()
               <div className="w-full lg:w-[60%]">
                 <button
                   type="submit"
-                  className="text-sm flex w-full flex-1 items-center justify-center rounded-full border border-transparent bg-[#114f45] px-8 py-3 font-medium text-white hover:bg-[#F1F1F1] hover:text-[#114f45] hover:border-[#114f45] focus:outline-none focus:ring-2 focus:ring-[#114f45] focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full sm:mr-4 transition-all duration-300"
+                  className="text-sm flex w-full font-bold flex-1 items-center justify-center rounded-full border border-transparent bg-[#114f45] px-8 py-3 text-white hover:bg-[#F1F1F1] hover:text-[#114f45] hover:border-[#114f45] focus:outline-none focus:ring-2 focus:ring-[#114f45] focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full sm:mr-4 transition-all duration-300"
                   onClick={() => {
                     goToTop()
                     setCartModal(!cartModal)
@@ -207,7 +207,7 @@ const {resolvedTheme} = useTheme()
               <div className="w-full lg:w-[40%]">
                 <button
                   type="button"
-                  className="text-sm w-full bg-[#F1F1F1] flex items-center justify-center rounded-full px-3 py-3 text-[#114f45] border border-[#114f45] hover:bg-[#114f45] hover:text-white transition-all duration-300"
+                  className="text-sm w-full bg-[#F1F1F1]  font-bold flex items-center justify-center rounded-full px-3 py-3 text-[#114f45] border border-[#114f45] hover:bg-[#114f45] hover:text-white transition-all duration-300"
                 >
                   <ShoppingBagIcon
                     className="-ml-0.5 h-5 w-5"
@@ -222,7 +222,7 @@ const {resolvedTheme} = useTheme()
 
         <div>
           <div className="mx-auto max-w-[1400px] py-16 px-6 sm:py-24 md:px-8 lg:px-16">
-            <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+            <h2 className="text-2xl font-bold tracking-tight text-gray-500">
               More products on Points
             </h2>
 
