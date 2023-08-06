@@ -79,14 +79,12 @@ const GiftCardDropdown = () => {
                 <>
                   <div className="relative flex">
                     <Popover.Button
-                      className={classNames(
-                        open
-                          ? "border-[#114f45] text-[#114f45]"
-                          : "border-transparent text-gray-700 hover:text-gray-800",
-                        "relative z-10 -mb-px flex items-center border-b-2 pt-px text-base font-semibold transition-colors duration-200 ease-out"
-                      )}
+                     
                     >
-                      {category.name}
+                      <div
+                       className={`flex items-center text-base font-semibold  ${
+                        mounted && resolvedTheme === "dark" ? "" : "text-gray-700 hover:text-gray-800"
+                      }`}>{category.name}</div>
                     </Popover.Button>
                   </div>
 
@@ -106,14 +104,24 @@ const GiftCardDropdown = () => {
                         aria-hidden="true"
                       />
 
-                      <div className={`relative ${mounted && resolvedTheme === "dark" ? "bg-black" : "bg-white"}`}>
+                      <div
+                        className={`relative ${
+                          mounted && resolvedTheme === "dark"
+                            ? "bg-black"
+                            : "bg-white"
+                        }`}
+                      >
                         <div className="mx-auto max-w-7xl px-8">
                           <div className="grid grid-cols-2 items-start gap-x-8 gap-y-10 pb-12 pt-10">
                             <div className="grid grid-cols-2 gap-x-8 gap-y-10">
                               <div>
                                 <p
                                   id={`desktop-featured-heading-${categoryIdx}`}
-                                  className={`font-semibold  ${mounted && resolvedTheme === "dark" ? "text-white" : "text-gray-900"}`}
+                                  className={`font-semibold  ${
+                                    mounted && resolvedTheme === "dark"
+                                      ? "text-white"
+                                      : "text-gray-900"
+                                  }`}
                                 >
                                   Featured
                                 </p>
@@ -137,7 +145,11 @@ const GiftCardDropdown = () => {
                               <div>
                                 <p
                                   id="desktop-categories-heading"
-                                  className={`font-semibold  ${mounted && resolvedTheme === "dark" ? "text-white" : "text-gray-900"}`}
+                                  className={`font-semibold  ${
+                                    mounted && resolvedTheme === "dark"
+                                      ? "text-white"
+                                      : "text-gray-900"
+                                  }`}
                                 >
                                   Categories
                                 </p>
@@ -163,7 +175,11 @@ const GiftCardDropdown = () => {
                               <div>
                                 <p
                                   id="desktop-collection-heading"
-                                  className={`font-semibold  ${mounted && resolvedTheme === "dark" ? "text-white" : "text-gray-900"}`}
+                                  className={`font-semibold  ${
+                                    mounted && resolvedTheme === "dark"
+                                      ? "text-white"
+                                      : "text-gray-900"
+                                  }`}
                                 >
                                   Popular in Nigeria
                                 </p>
@@ -179,7 +195,11 @@ const GiftCardDropdown = () => {
                               <div>
                                 <p
                                   id="desktop-brand-heading"
-                                  className={`font-semibold  ${mounted && resolvedTheme === "dark" ? "text-white" : "text-gray-900"}`}
+                                  className={`font-semibold  ${
+                                    mounted && resolvedTheme === "dark"
+                                      ? "text-white"
+                                      : "text-gray-900"
+                                  }`}
                                 >
                                   Trending
                                 </p>
