@@ -9,7 +9,7 @@ export default function Rating() {
     <div className="z-[10]">
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="flex items-center gap-1 rounded-[24px] bg-white shadow-sm border text-sm px-3 sm:px-6 py-3">
+          <Menu.Button className="flex items-center gap-1 rounded-[24px]  shadow-sm border text-sm px-3 sm:px-6 py-3">
             <div className="font-bold whitespace-nowrap">Rating</div>
             <ChevronDownIcon
               className="ml-2 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100"

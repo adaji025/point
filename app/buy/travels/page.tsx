@@ -1,53 +1,18 @@
+"use client"
+
+import React from "react";
 import Faq from "@/components/Faq/Faq";
 import HowItWorks from "@/components/buy/HowItWorks";
 import Featured from "@/components/buy/dropdown/Featured";
 import OnlineStore from "@/components/buy/dropdown/OnlineStore";
 import Rating from "@/components/buy/dropdown/Rating";
 import Reward from "@/components/buy/dropdown/Reward";
-import { ChevronDownIcon, StarIcon } from "@heroicons/react/24/outline";
-import Link from "next/link";
-import React from "react";
+import Card from "@/components/Home/Card";
 
 
-type CardProps = {
-  item: {
-    slug: string
-    name: string;
-    priceStart: number;
-    priceEnd: number;
-    rating: string;
-    image: string;
-  };
-};
 
-const Card = ({ item }: CardProps) => {
-  return (
-    <Link href={{
-      pathname: `/top-giftcards/${item.slug}`,
-      query: item
-    }} className="w-full min-h-[320px] rounded-[10px] p-2">
-      <img
-        src={item.image}
-        alt=""
-        className="w-full h-[200px] hover:scale-105 transition-all duration-300 rounded-[10px]"
-      />
-      <div className="flex justify-between">
-        <div className="mt-2 grid">
-          <span className=" font-bold  text-[22px] capitalize">
-            {item.name}
-          </span>
-          <span className="text-lg mt-[-5px] font-medium text-[#231F20]">
-            {item.priceStart} NGN - {item.priceEnd} NGN
-          </span>
-        </div>
-        <div className="flex gap-1 items-center">
-          <span className="font-bold">4.6</span>
-          <StarIcon />
-        </div>
-      </div>
-    </Link>
-  );
-};
+
+
 
 
 const Travels = () => {

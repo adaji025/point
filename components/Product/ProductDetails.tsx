@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import {
   ShoppingBagIcon,
   ShoppingCartIcon,
@@ -10,58 +11,21 @@ import Link from "next/link";
 import EstimateDropdown from "./EstimateDropdown";
 import Cart from "../Checkout/Cart";
 import { useData } from "@/context/DataContext";
+import { useTheme } from "next-themes";
+import Card from "../Home/Card";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-type CardProps = {
-  item: {
-    slug: string;
-    name: string;
-    priceStart: number;
-    priceEnd: number;
-    rating: string;
-    image: string;
-  };
-};
 
-const Card = ({ item }: CardProps) => {
-  return (
-    <Link
-      href={{
-        pathname: `/top-giftcards/${item.slug}`,
-        query: item,
-      }}
-      className="w-full min-h-[320px] rounded-[10px] p-2"
-    >
-      <img
-        src={item.image}
-        alt=""
-        className="w-full hover:scale-95 transition-all duration-300 rounded-[10px]"
-      />
-      <div className="flex justify-between">
-        <div className="mt-2 grid">
-          <span className=" font-bold  text-[22px] capitalize">
-            {item.name}
-          </span>
-          <span className="text-lg mt-[-5px] font-medium text-[#231F20]">
-            {item.priceStart} NGN - {item.priceEnd} NGN
-          </span>
-        </div>
-        <div className="flex gap-1 items-center">
-          <span className="font-bold">4.6</span>
-          <StarIcon />
-        </div>
-      </div>
-    </Link>
-  );
-};
+
 
 export default function ProductDetails() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [cartModal, setCartModal] = useState(false);
+  const [mounted, setMounted] = useState(false);
+const {resolvedTheme} = useTheme()
+
   const { addToCart } = useData();
 
   const handleAddToCart = () => {
@@ -74,7 +38,9 @@ export default function ProductDetails() {
         top: 0,
         behavior: "smooth",
     });
-};
+  };
+  
+  useEffect(() => setMounted(true))
 
 
   const products = [
@@ -147,7 +113,7 @@ export default function ProductDetails() {
   return (
     <>
       {cartModal && <Cart {...{cartModal, setCartModal}} />}
-      <div className="bg-gray-100 pt-20">
+      <div className={`pt-20 ${mounted && resolvedTheme === "dark" ? "" : "bg-gray-100"}`}>
         <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
           <div className="rounded-lg md:w-2/3 sticky top-0">
             <div className="justify-center items-center h-full mb-6 rounded-lg bg-white p-6 shadow-md flex ">
@@ -161,8 +127,8 @@ export default function ProductDetails() {
           <div className="mt-6 h-full rounded-lg p-6 md:mt-0 md:w-2/3">
             <div className="mb-2 flex justify-between">
               <div className="mt-5 sm:mt-0">
-                <h2 className="text-2xl font-bold text-gray-900">MTN Refill</h2>
-                <p className="mt-1 text-1xl text-gray-700">
+                <h2 className={`text-2xl font-bold ${mounted && resolvedTheme === "dark" ? "" : "text-gray-900"}`}>MTN Refill</h2>
+                <p className={`mt-1 text-1xl ${mounted && resolvedTheme === "dark" ? "" : "text-gray-700"}`}>
                   MTN formerly M-Cell, is one of Nigeria's premier mobile
                   service providers. With Bitrefill's MTN refill, you can top-up
                   mobile minutes and data from MTN with Bitcoin, Ethereum, Dash,
@@ -178,7 +144,7 @@ export default function ProductDetails() {
                 >
                   Enter amount
                 </label>
-                <div className="mt-2 bg-white shadow-inner w-full">
+                <div className="mt-2 bg-white shadow-inner rounded-lg w-full">
                   <input
                     type="text"
                     name="email"
