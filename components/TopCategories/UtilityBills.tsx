@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Link from "next/link";
 import { ChevronLeftIcon, ChevronRightIcon, StarIcon } from "@heroicons/react/24/outline";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,6 +9,7 @@ import SwiperCore, { Navigation } from "swiper";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import { useTheme } from "next-themes";
 
 SwiperCore.use([Navigation]);
 
@@ -28,6 +29,10 @@ type CardProps = {
 };
 
 const Card = ({ item }: CardProps) => {
+  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme } = useTheme()
+
+  useEffect(() => setMounted(true))
   return (
     <Link href={{
       pathname: `/top-giftcards/${item.slug}`,
@@ -43,7 +48,13 @@ const Card = ({ item }: CardProps) => {
           <span className=" font-bold  text-[22px] capitalize">
             {item.name}
           </span>
-          <span className="text-lg mt-[-5px] font-medium text-[#231F20]">
+          <span
+            className={`text-lg mt-[-5px] font-medium  ${
+              mounted && resolvedTheme === "dark"
+                ? "text-light-theme"
+                : "text-dark-theme"
+            }`}
+          >
             {item.priceStart} NGN - {item.priceEnd} NGN
           </span>
         </div>

@@ -1,16 +1,17 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { useTheme } from "next-themes";
 
 const OnlineStore = () => {
   return (
     <div className="z-[10]">
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="flex items-center gap-1 rounded-[24px] bg-white shadow-sm border px-3 text-sm sm:text-base sm:px-6 py-3">
+          <Menu.Button className="flex items-center gap-1 rounded-[24px]  shadow-sm border px-3 text-sm sm:text-base sm:px-6 py-3">
             <div className="font-bold whitespace-nowrap ">Online/In-store</div>
             <ChevronDownIcon
               className="ml-2 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100"

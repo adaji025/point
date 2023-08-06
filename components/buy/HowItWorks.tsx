@@ -1,6 +1,13 @@
-import React from 'react'
+"use client"
+
+import { useTheme } from 'next-themes';
+import React, {useState, useEffect} from 'react'
 
 const HowItWorks = () => {
+  const [mounted, setMounted] = useState(false);
+    const { resolvedTheme } = useTheme();
+  
+    useEffect(() => setMounted(true));
   return (
     <div className="mt-10">
         <span className="font-bold text-[24px] sm:text-[42px] block">
@@ -11,7 +18,7 @@ const HowItWorks = () => {
             <div className="w-full bg-white shadow-sm border rounded-[12px] h-[200px]"></div>
             <div className="mt-3">
               <h2 className="text-[24px] font-semibold">Enter the amount</h2>
-              <p className="text-black/70">
+              <p className={`${mounted && resolvedTheme === "dark" ? "" : "text-black/70"}`}>
                 Select or type the amount you want the card to have.
               </p>
             </div>
@@ -20,7 +27,7 @@ const HowItWorks = () => {
             <div className="w-full bg-white shadow-sm border rounded-[12px] h-[200px]"></div>
             <div className="mt-3">
               <h2 className="text-[24px] font-semibold">Pay with your preferred coin</h2>
-              <p className="text-black/70">
+              <p className={`${mounted && resolvedTheme === "dark" ? "" : "text-black/70"}`}>
                 Your payment is confirmed the same minute in most cases.
               </p>
             </div>
@@ -29,7 +36,7 @@ const HowItWorks = () => {
             <div className="w-full bg-white shadow-sm border rounded-[12px] h-[200px]"></div>
             <div className="mt-3">
               <h2 className="text-[24px] font-semibold">That's it, ready to use it!</h2>
-              <p className="text-black/70">
+              <p className={`${mounted && resolvedTheme === "dark" ? "" : "text-black/70"}`}>
                 Redeem your card at your chosen retailer according to their
                 instructions.
               </p>
