@@ -15,7 +15,7 @@ const Hero = () => {
             Search. Shop. Pay.
           </h2>
           <p className="text-[18px] md:text-[22px]">
-          Experience a revolutionary way to shop with Crypto and More.
+          Experience a revolutionary way to shop with multiple options.
           </p>
           <div className="mt-5 flex gap-5 items-center">
             <button className="border flex items-center justify-center gap-2 w-[150px] py-2 px-3 rounded-full hover:scale-105 transition-all duration-200"
