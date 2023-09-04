@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useTheme } from "next-themes";
 import {
   ChevronLeftIcon,
@@ -15,17 +15,65 @@ import SwiperCore, { Navigation } from "swiper";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-import Card from "./Card";
+import { getProducts } from "@/services/products";
+import { ProductTypes } from "@/types/productTypes";
+
+type ItemType = {
+  item: ProductTypes
+}
+
+
+
+const Card: React.FC<ItemType> = ({item}) => {
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
+
+
+  useEffect(() => setMounted(true));
+  return (
+    <Link
+      href={{
+        pathname: `/top-giftcards/${item._id}`,
+        // @ts-ignore
+        query: item,
+      }}
+      className="w-full min-h-[320px] rounded-[10px] p-2"
+    >
+      <img
+        src={item.image}
+        alt=""
+        className="w-full hover:scale-95 transition-all duration-300 rounded-[10px]"
+      />
+      <div className="flex justify-between">
+        <div className="mt-2 grid">
+          <span className=" font-bold  text-[22px] capitalize">
+            {item.name}
+          </span>
+          <span
+            className={`text-lg mt-[-5px] font-medium  ${
+              mounted && resolvedTheme === "dark"
+                ? "text-light-theme"
+                : "text-dark-theme"
+            }`}
+          >
+            {item?.amount_range?.min} NGN - {item.amount_range?.max} NGN
+          </span>
+        </div>
+        <div className="flex gap-1 items-center">
+          <span className="font-bold">4.6</span>
+          <StarIcon />
+        </div>
+      </div>
+    </Link>
+  );
+}
 
 SwiperCore.use([Navigation]);
 
-
-
-
-
 const TopGiftCard = () => {
-  const navigationPrevRef = React.useRef(null);
-  const navigationNextRef = React.useRef(null);
+  const [products, setProducts] = useState<ProductTypes[]>([]);
+  const navigationPrevRef = useRef(null);
+  const navigationNextRef = useRef(null);
 
   const topGiftCard = [
     {
@@ -93,6 +141,22 @@ const TopGiftCard = () => {
       image: "/images/mtn.png",
     },
   ];
+
+  useEffect(() => {
+    handleGetProducts()
+  }, [])
+
+  console.log("products ==>", products);
+  const handleGetProducts = () => {
+    getProducts("NG")
+      .then((res: any) => {
+        setProducts(res.data);
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+      .finally(() => {});
+  };
 
   return (
     <div className="mt-20 max-w-[1400px] mx-auto px-6 md:px-8 lg:px-16">
@@ -194,8 +258,8 @@ const TopGiftCard = () => {
           }}
           className="mySwiper"
         >
-          {topGiftCard.map((item, idx) => (
-            <SwiperSlide key={idx}>
+          {products.map((item, idx) => (
+            <SwiperSlide key={item._id}>
               <Card {...{ item }} />
             </SwiperSlide>
           ))}
