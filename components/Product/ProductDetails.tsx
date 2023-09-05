@@ -13,6 +13,7 @@ import Cart from "../Checkout/Cart";
 import { useData } from "@/context/DataContext";
 import { useTheme } from "next-themes";
 import Card from "../Home/Card";
+import { useParams } from "next/navigation";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -24,7 +25,10 @@ function classNames(...classes: string[]) {
 export default function ProductDetails() {
   const [cartModal, setCartModal] = useState(false);
   const [mounted, setMounted] = useState(false);
-const {resolvedTheme} = useTheme()
+  const { resolvedTheme } = useTheme()
+  const params = useParams()
+
+  console.log(params)
 
   const { addToCart } = useData();
 
