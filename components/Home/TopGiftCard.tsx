@@ -34,8 +34,7 @@ const Card: React.FC<ItemType> = ({item}) => {
     <Link
       href={{
         pathname: `/top-giftcards/${item._id}`,
-        // @ts-ignore
-        query: item,
+        query: item._id,
       }}
       className="w-full min-h-[320px] rounded-[10px] p-2"
     >
@@ -72,83 +71,20 @@ SwiperCore.use([Navigation]);
 
 const TopGiftCard = () => {
   const [products, setProducts] = useState<ProductTypes[]>([]);
+  const [category] = useState<string>("airtime")
+  const [countryCode] = useState<string>("NG")
+  const [limit] = useState<number>(10)
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
 
-  const topGiftCard = [
-    {
-      slug: "hulu",
-      name: "hulu",
-      priceStart: 5,
-      priceEnd: 5000,
-      rating: "4.7",
-      image: "/images/hulu.png",
-    },
-    {
-      slug: "fanatics",
-      name: "fanatics",
-      priceStart: 5,
-      priceEnd: 5000,
-      rating: "4.7",
-      image: "/images/fanatics.png",
-    },
-    {
-      slug: "google-play",
-      name: "google play",
-      priceStart: 5,
-      priceEnd: 5000,
-      rating: "4.7",
-      image: "/images/google-play.png",
-    },
-    {
-      slug: "mtn",
-      name: "MTN",
-      priceStart: 5,
-      priceEnd: 5000,
-      rating: "4.7",
-      image: "/images/mtn.png",
-    },
-    {
-      slug: "hulu",
-      name: "hulu",
-      priceStart: 5,
-      priceEnd: 5000,
-      rating: "4.7",
-      image: "/images/hulu.png",
-    },
-    {
-      slug: "fanatics",
-      name: "fanatics",
-      priceStart: 5,
-      priceEnd: 5000,
-      rating: "4.7",
-      image: "/images/fanatics.png",
-    },
-    {
-      slug: "google-play",
-      name: "google play",
-      priceStart: 5,
-      priceEnd: 5000,
-      rating: "4.7",
-      image: "/images/google-play.png",
-    },
-    {
-      slug: "mtn",
-      name: "MTN",
-      priceStart: 5,
-      priceEnd: 5000,
-      rating: "4.7",
-      image: "/images/mtn.png",
-    },
-  ];
+ 
 
   useEffect(() => {
     handleGetProducts()
   }, [])
 
-  console.log("products ==>", products);
   const handleGetProducts = () => {
-    getProducts("NG")
+    getProducts(category, countryCode, limit)
       .then((res: any) => {
         setProducts(res.data);
       })
@@ -258,7 +194,7 @@ const TopGiftCard = () => {
           }}
           className="mySwiper"
         >
-          {products.map((item, idx) => (
+          {products.map((item) => (
             <SwiperSlide key={item._id}>
               <Card {...{ item }} />
             </SwiperSlide>

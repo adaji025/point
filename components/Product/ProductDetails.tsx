@@ -10,133 +10,102 @@ import {
 import Link from "next/link";
 import EstimateDropdown from "./EstimateDropdown";
 import Cart from "../Checkout/Cart";
-import { useData } from "@/context/DataContext";
 import { useTheme } from "next-themes";
 import Card from "../Home/Card";
 import { useParams } from "next/navigation";
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
-
-
-
+import { getSingleProduct } from "@/services/products";
+import { ProductTypes } from "@/types/productTypes";
+import useCart from "@/hooks/UseCart";
 
 export default function ProductDetails() {
-  const [cartModal, setCartModal] = useState(false);
+  const [cartModal, setCartModal] = useState(true);
   const [mounted, setMounted] = useState(false);
-  const { resolvedTheme } = useTheme()
-  const params = useParams()
+  const [product, setProduct] = useState<ProductTypes | null>(null);
+  const { resolvedTheme } = useTheme();
+  const { dispatch, REDUCER_ACTIONS, cart } = useCart();
+  const params = useParams();
+  const { slug } = params;
 
-  console.log(params)
-
-  const { addToCart } = useData();
+  console.log(cart)
 
   const handleAddToCart = () => {
     // Logic for adding item to cart
-    console.log(`Item ${products} added to cart`);
+    product &&
+      dispatch({
+        type: REDUCER_ACTIONS.ADD,
+        payload: {
+          _id: product?._id,
+          name: product?.name,
+          price: 100,
+          rate: 10,
+          qty: 1,
+        },
+      });
+
+    console.log(`Item ${cart} added to cart`);
   };
 
   const goToTop = () => {
     window.scrollTo({
-        top: 0,
-        behavior: "smooth",
+      top: 0,
+      behavior: "smooth",
     });
   };
-  
-  useEffect(() => setMounted(true))
 
+  useEffect(() => setMounted(true));
+  useEffect(() => {
+    handleGetProduct();
+  }, []);
 
-  const products = [
-    {
-      slug: "dstv",
-      name: "DSTV",
-      priceStart: 5,
-      priceEnd: 5000,
-      rating: "4.7",
-      image: "/images/dstv.png",
-    },
-    {
-      slug: "spotify",
-      name: "spotify",
-      priceStart: 5,
-      priceEnd: 5000,
-      rating: "4.7",
-      image: "/images/spotify.png",
-    },
-    {
-      slug: "spectranet",
-      name: "spectranet",
-      priceStart: 5,
-      priceEnd: 5000,
-      rating: "4.7",
-      image: "/images/google-play.png",
-    },
-    {
-      slug: "hulu",
-      name: "MTN",
-      priceStart: 5,
-      priceEnd: 5000,
-      rating: "4.7",
-      image: "/images/mtn.png",
-    },
-    {
-      slug: "hulu",
-      name: "hulu",
-      priceStart: 5,
-      priceEnd: 5000,
-      rating: "4.7",
-      image: "/images/hulu.png",
-    },
-    {
-      slug: "fanatics",
-      name: "fanatics",
-      priceStart: 5,
-      priceEnd: 5000,
-      rating: "4.7",
-      image: "/images/fanatics.png",
-    },
-    {
-      slug: "spectranet",
-      name: "spectranet",
-      priceStart: 5,
-      priceEnd: 5000,
-      rating: "4.7",
-      image: "/images/spectranet.png",
-    },
-    {
-      slug: "",
-      name: "visa",
-      priceStart: 5,
-      priceEnd: 5000,
-      rating: "4.7",
-      image: "/images/visa.png",
-    },
-  ];
+  const handleGetProduct = () => {
+    getSingleProduct(slug)
+      .then((res: any) => {
+        setProduct(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {});
+  };
 
   return (
     <>
-      {cartModal && <Cart {...{cartModal, setCartModal}} />}
-      <div className={`pt-20 ${mounted && resolvedTheme === "dark" ? "bg-black" : "bg-gray-100"}`}>
+      {cartModal && <Cart {...{ cartModal, setCartModal }} />}
+      <div
+        className={`pt-20 ${
+          mounted && resolvedTheme === "dark" ? "bg-black" : "bg-gray-100"
+        }`}
+      >
         <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
-          <div className="rounded-lg md:w-2/3 sticky top-0">
-            <div className={`justify-center items-center h-full mb-6 rounded-lg p-6 shadow-md flex ${mounted && resolvedTheme === "dark" ? "bg-black/50" : "bg-white"}`}>
+          <div className="rounded-lg md:w-2/3">
+            <div
+              className={`justify-center items-center h-full mb-6 rounded-lg p-6 shadow-md flex ${
+                mounted && resolvedTheme === "dark" ? "bg-black/50" : "bg-white"
+              }`}
+            >
               <img
-                src="https://images.africanfinancials.com/63be93ed-ng-mtn-logo-200x200.png"
+                src={product?.image}
                 alt="product-image"
-                className="py-6 px-8 rounded-lg w-[400px] h-[400px]"
+                className="py-6 px-8 rounded-lg "
               />
             </div>
           </div>
           <div className="mt-6 h-full rounded-lg p-6 md:mt-0 md:w-2/3">
             <div className="mb-2 flex justify-between">
               <div className="mt-5 sm:mt-0">
-                <h2 className={`text-2xl font-bold ${mounted && resolvedTheme === "dark" ? "" : "text-gray-900"}`}>MTN Refill</h2>
-                <p className={`mt-1 text-1xl ${mounted && resolvedTheme === "dark" ? "" : "text-gray-700"}`}>
-                  MTN formerly M-Cell, is one of Nigeria's premier mobile
-                  service providers. With Bitrefill's MTN refill, you can top-up
-                  mobile minutes and data from MTN with Bitcoin, Ethereum, Dash,
-                  Dogecoin, and Litecoin.
+                <h2
+                  className={`text-2xl font-bold ${
+                    mounted && resolvedTheme === "dark" ? "" : "text-gray-900"
+                  }`}
+                >
+                  {product?.name}
+                </h2>
+                <p
+                  className={`mt-1 text-1xl ${
+                    mounted && resolvedTheme === "dark" ? "" : "text-gray-700"
+                  }`}
+                >
+                  {product?._comment}
                 </p>
               </div>
             </div>
@@ -150,11 +119,10 @@ export default function ProductDetails() {
                 </label>
                 <div className="mt-2 bg-white shadow-inner rounded-lg w-full">
                   <input
-                    type="text"
-                    name="email"
-                    id="email"
-                    className="w-full outline-none border-0 shadow p-3 rounded-lg focus:ring-offset-1 focus:ring-offset-black placeholder:font-bold"
-                    placeholder="N 5 - 5000"
+                    type="number"
+                    name="amount"
+                    className="w-full text-black outline-none border-0 shadow p-3 rounded-lg focus:ring-offset-1 focus:ring-offset-black placeholder:font-bold"
+                    placeholder={`NGN ${product?.amount_range?.min.toString()}`}
                   />
                 </div>
               </div>
@@ -179,10 +147,10 @@ export default function ProductDetails() {
                 <div className="mt-2">
                   <input
                     style={{ outline: 0 }}
-                    type="text"
+                    type="number"
                     name="phonenumber"
                     id="number"
-                    className="w-full !outline-none bg-white border-0 shadow p-3 rounded-lg focus:ring-offset-1 focus:ring-offset-black"
+                    className="w-full !outline-none text-black bg-white border-0 shadow p-3 rounded-lg focus:ring-offset-1 focus:ring-offset-black"
                     placeholder="08100135069"
                   />
                 </div>
@@ -196,8 +164,9 @@ export default function ProductDetails() {
                   type="submit"
                   className="text-sm flex w-full font-bold flex-1 items-center justify-center rounded-full border border-transparent bg-[#114f45] px-8 py-3 text-white hover:bg-[#F1F1F1] hover:text-[#114f45] hover:border-[#114f45] focus:outline-none focus:ring-2 focus:ring-[#114f45] focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full sm:mr-4 transition-all duration-300"
                   onClick={() => {
-                    goToTop()
-                    setCartModal(!cartModal)
+                    goToTop();
+                    setCartModal(!cartModal);
+                    handleAddToCart();
                   }}
                 >
                   <ShoppingCartIcon
@@ -231,9 +200,9 @@ export default function ProductDetails() {
             </h2>
 
             <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-              {products.map((item, idx) => (
+              {/* {products.map((item, idx) => (
                 <Card key={idx} {...{ item }} />
-              ))}
+              ))} */}
             </div>
           </div>
         </div>

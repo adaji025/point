@@ -1,8 +1,12 @@
 import React, { Fragment } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import { ChevronDownIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
+import useCart from "@/hooks/UseCart";
 
 const Cart = () => {
+  const { totalItems } = useCart()
+  
+  console.log("total items: " + totalItems)
   return (
     <div className="flow-root">
       <Popover.Group>
@@ -13,13 +17,13 @@ const Cart = () => {
               aria-hidden="true"
             />
             <span className="text-base font-medium ">
-              0
+              {totalItems}
             </span>
             <span className="sr-only">items in cart, view bag</span>
-            {/* <ChevronDownIcon
-              className="h-5 w-5 flex-none text-gray-400"
+            <ChevronDownIcon
+              className="h-3 w-3 flex-none text-white"
               aria-hidden="true"
-            /> */}
+            />
           </Popover.Button>
 
           <Transition
