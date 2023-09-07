@@ -1,17 +1,17 @@
 "use client";
 
-import React, { useState, useEffect, FC } from "react";
+import React, { useState, useEffect, FC, ReactElement } from "react";
 import NextTopLoader from "nextjs-toploader";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import DataProvider from "@/context/DataContext";
+import { CartProvider } from "@/context/CartProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactElement;
 };
 
 const ClientComponent: FC<Props> = ({ children }) => {
@@ -20,11 +20,11 @@ const ClientComponent: FC<Props> = ({ children }) => {
       <body className={`${inter.className}`}>
         <NextTopLoader color="#2A7671" />
         <ThemeProvider attribute="class">
-          <DataProvider>
-            <Navbar />
-            {children}
-            <Footer />
-          </DataProvider>
+            <CartProvider>
+              <Navbar />
+              {children}
+              <Footer />
+            </CartProvider>
         </ThemeProvider>
       </body>
     </html>

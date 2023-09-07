@@ -1,5 +1,6 @@
 import ClientComponent from "@/components/ClientComponent";
 import "../styles/globals.css";
+import { ReactElement } from "react";
 
 export const metadata = {
   title: "POINTS: Buy Gift Cards, Pay Utility Bills and much more on Points.",
@@ -9,10 +10,6 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactElement }) {
   return <ClientComponent>{children}</ClientComponent>;
 }

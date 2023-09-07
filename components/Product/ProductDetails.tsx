@@ -10,32 +10,39 @@ import {
 import Link from "next/link";
 import EstimateDropdown from "./EstimateDropdown";
 import Cart from "../Checkout/Cart";
-import { useData } from "@/context/DataContext";
 import { useTheme } from "next-themes";
 import Card from "../Home/Card";
 import { useParams } from "next/navigation";
 import { getSingleProduct } from "@/services/products";
 import { ProductTypes } from "@/types/productTypes";
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
+import useCart from "@/hooks/UseCart";
 
 export default function ProductDetails() {
-  const [cartModal, setCartModal] = useState(false);
+  const [cartModal, setCartModal] = useState(true);
   const [mounted, setMounted] = useState(false);
   const [product, setProduct] = useState<ProductTypes | null>(null);
   const { resolvedTheme } = useTheme();
+  const { dispatch, REDUCER_ACTIONS, cart } = useCart();
   const params = useParams();
   const { slug } = params;
 
-  console.log(product);
-
-  const { addToCart } = useData();
+  console.log(cart)
 
   const handleAddToCart = () => {
     // Logic for adding item to cart
-    console.log(`Item ${product} added to cart`);
+    product &&
+      dispatch({
+        type: REDUCER_ACTIONS.ADD,
+        payload: {
+          _id: product?._id,
+          name: product?.name,
+          price: 100,
+          rate: 10,
+          qty: 1,
+        },
+      });
+
+    console.log(`Item ${cart} added to cart`);
   };
 
   const goToTop = () => {
@@ -60,8 +67,6 @@ export default function ProductDetails() {
       })
       .finally(() => {});
   };
-
-  
 
   return (
     <>
@@ -161,6 +166,7 @@ export default function ProductDetails() {
                   onClick={() => {
                     goToTop();
                     setCartModal(!cartModal);
+                    handleAddToCart();
                   }}
                 >
                   <ShoppingCartIcon
