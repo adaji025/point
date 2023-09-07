@@ -28,7 +28,7 @@ const Cart = ({ cartModal, setCartModal }: Props) => {
       <div
         className={`absolute right-[40px] top-[90px] z-30 mt-3 min-w-56 rounded-3xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5`}
       >
-        {/* {cart.length === 0 && (
+        {cart.length === 0 && (
           <div className="relative rounded-lg p-4 hover:bg-gray-50">
             <a className="block text-sm font-semibold leading-6 text-gray-900">
               Your cart is empty
@@ -38,9 +38,9 @@ const Cart = ({ cartModal, setCartModal }: Props) => {
               Looks like you haven't added anything to your cart yet
             </p>
           </div>
-        )} */}
+        )}
 
-        {/* {cart.length > 0 && ( */}
+        {cart.length > 0 && (
 
         <div>
           {cart &&
@@ -90,7 +90,7 @@ const Cart = ({ cartModal, setCartModal }: Props) => {
             </button>
           </div>
         </div>
-        {/* )} */}
+         )}
       </div>
     </div>
   );
