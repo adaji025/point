@@ -28,7 +28,7 @@ export const AirtimeCard = ({ item, loading }: ItemType) => {
         className="w-full min-h-[320px] p-2"
       >
         <img
-          src={item.image}
+          src={item.image === "" ? "/images/plain-2.png" : item.image}
           alt={item.name}
           className="hover:scale-95 transition-all duration-300 border border-gray-100"
         />
