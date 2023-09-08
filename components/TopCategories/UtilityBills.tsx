@@ -41,7 +41,7 @@ const Card = ({ item }: CardProps) => {
       <img
         src={item.image}
         alt=""
-        className="w-full hover:scale-105 transition-all duration-300 rounded-[10px]"
+        className="hover:scale-105 transition-all duration-300 rounded-[10px]"
       />
       <div className="flex justify-between">
         <div className="mt-2 grid">

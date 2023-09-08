@@ -1,13 +1,9 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import { useTheme } from "next-themes";
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  StarIcon,
-} from "@heroicons/react/24/outline";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import "react-loading-skeleton/dist/skeleton.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
@@ -17,81 +13,38 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { getProducts } from "@/services/products";
 import { ProductTypes } from "@/types/productTypes";
-
-type ItemType = {
-  item: ProductTypes
-}
-
-
-
-const Card: React.FC<ItemType> = ({item}) => {
-  const [mounted, setMounted] = useState(false);
-  const { resolvedTheme } = useTheme();
-
-
-  useEffect(() => setMounted(true));
-  return (
-    <Link
-      href={{
-        pathname: `/top-giftcards/${item._id}`,
-        query: item._id,
-      }}
-      className="w-full min-h-[320px] rounded-[10px] p-2"
-    >
-      <img
-        src={item.image}
-        alt=""
-        className="w-full hover:scale-95 transition-all duration-300 rounded-[10px]"
-      />
-      <div className="flex justify-between">
-        <div className="mt-2 grid">
-          <span className=" font-bold  text-[22px] capitalize">
-            {item.name}
-          </span>
-          <span
-            className={`text-lg mt-[-5px] font-medium  ${
-              mounted && resolvedTheme === "dark"
-                ? "text-light-theme"
-                : "text-dark-theme"
-            }`}
-          >
-            {item?.amount_range?.min} NGN - {item.amount_range?.max} NGN
-          </span>
-        </div>
-        <div className="flex gap-1 items-center">
-          <span className="font-bold">4.6</span>
-          <StarIcon />
-        </div>
-      </div>
-    </Link>
-  );
-}
+import CardSkeleton from "../Skeleton/CardSkeleton";
+import { AirtimeCard } from "../PhoneTopUp/AirtimeCard";
 
 SwiperCore.use([Navigation]);
 
 const TopGiftCard = () => {
   const [products, setProducts] = useState<ProductTypes[]>([]);
-  const [category] = useState<string>("airtime")
-  const [countryCode] = useState<string>("NG")
-  const [limit] = useState<number>(10)
+  const [category] = useState<string>("airtime");
+  const [countryCode] = useState<string>("NG");
+  const [limit] = useState<number>(10);
+  const [loading, setLoading] = useState<boolean>(false);
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
 
+  useEffect(() => {
+    handleGetProducts();
+  }, []);
+
  
 
-  useEffect(() => {
-    handleGetProducts()
-  }, [])
-
   const handleGetProducts = () => {
+    setLoading(true);
     getProducts(category, countryCode, limit)
       .then((res: any) => {
         setProducts(res.data);
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
       })
-      .finally(() => {});
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -127,6 +80,15 @@ const TopGiftCard = () => {
         </div>
       </div>
       <div className="">
+        {loading && (
+          <div className="grid grid-cols-4">
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+          </div>
+        )}
+
         <Swiper
           slidesPerView={1}
           spaceBetween={5}
@@ -196,7 +158,7 @@ const TopGiftCard = () => {
         >
           {products.map((item) => (
             <SwiperSlide key={item._id}>
-              <Card {...{ item }} />
+              <AirtimeCard {...{ item, loading }} />
             </SwiperSlide>
           ))}
         </Swiper>
