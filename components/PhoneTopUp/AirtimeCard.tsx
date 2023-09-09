@@ -35,11 +35,11 @@ export const AirtimeCard = ({ item, loading }: ItemType) => {
         {/* <Image fill src={item.image} alt={item.name} /> */}
         <div className="flex justify-between">
           <div className="mt-2 grid">
-            <span className=" font-bold  text-[18px] capitalize">
+            <span className=" font-medium  text-[18px] capitalize">
               {item.name}
             </span>
             <span
-              className={`text-lg font-medium  ${
+              className={`text-base  ${
                 mounted && resolvedTheme === "dark"
                   ? "text-light-theme"
                   : "text-dark-theme"
