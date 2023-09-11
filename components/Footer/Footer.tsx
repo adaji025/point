@@ -156,7 +156,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold">Solutions</h3>
+              <h3 className="text-lg font-extrabold">Solutions</h3>
               <ul role="list" className="mt-3 space-y-2">
                 {navigation.solutions.map((item) => (
                   <li key={item.name}>
@@ -240,9 +240,9 @@ export default function Footer() {
             </div>
 
             <p className="mt-8 text-sm  lg:order-1 lg:mt-0 flex flex-wrap items-center gap-3">
-              &copy; Copyright 2023 .
-              <span className="cursor-pointer">Terms and Conditions</span>
-              <span className="cursor-pointer">Privacy Policy</span>
+              &copy; Copyright 2023.
+              <span className="cursor-pointer">Terms and Conditions.</span>
+              <span className="cursor-pointer">Privacy Policy.</span>
             </p>
           </div>
         </div>
