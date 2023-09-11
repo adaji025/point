@@ -156,7 +156,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold">Solutions</h3>
+              <h3 className="text-lg font-extrabold">Solutions</h3>
               <ul role="list" className="mt-3 space-y-2">
                 {navigation.solutions.map((item) => (
                   <li key={item.name}>
