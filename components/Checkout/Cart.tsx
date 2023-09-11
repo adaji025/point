@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../styles/Modal.module.css";
 import useCart from "@/hooks/UseCart";
+import Link from "next/link";
 
 type Props = {
   cartModal: boolean;
@@ -85,9 +86,9 @@ const Cart = ({ cartModal, setCartModal }: Props) => {
             <button className=" w-full bg-black/5 rounded-full text-black p-2 text-xs font-medium">
               Keep Shopping
             </button>
-            <button className=" w-full rounded-full text-white p-2 text-xs font-medium bg-red">
+            <Link href="/checkout" className=" w-full rounded-full text-white p-2 text-xs font-medium bg-red">
               Checkout
-            </button>
+            </Link>
           </div>
         </div>
          )}

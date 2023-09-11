@@ -18,7 +18,7 @@ import { ProductTypes } from "@/types/productTypes";
 import useCart from "@/hooks/UseCart";
 
 export default function ProductDetails() {
-  const [cartModal, setCartModal] = useState(true);
+  const [cartModal, setCartModal] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [product, setProduct] = useState<ProductTypes | null>(null);
   const { resolvedTheme } = useTheme();
